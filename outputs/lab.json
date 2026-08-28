@@ -1,0 +1,1377 @@
+{
+  "calibration": {
+    "rows": [
+      {
+        "factor": "semantic_sim",
+        "label": "Dense query-document similarity",
+        "true": 1.0,
+        "naive": 1.0,
+        "naive_lo": 1.0,
+        "naive_hi": 1.0,
+        "naive_verdict": "RECOVERED",
+        "corrected": 1.0,
+        "lo": 1.0,
+        "hi": 1.0,
+        "noise_floor": 0.018669,
+        "verdict": "RECOVERED",
+        "why": "95% interval covers the truth"
+      },
+      {
+        "factor": "title_match",
+        "label": "Title-query match",
+        "true": 0.25,
+        "naive": 0.133945,
+        "naive_lo": 0.083372,
+        "naive_hi": 0.186858,
+        "naive_verdict": "MISSED",
+        "corrected": 0.131899,
+        "lo": 0.082259,
+        "hi": 0.184137,
+        "noise_floor": 0.019444,
+        "verdict": "MISSED",
+        "why": "understated -- interval sits entirely below the truth"
+      },
+      {
+        "factor": "host_pagerank",
+        "label": "Host-graph PageRank",
+        "true": 0.727273,
+        "naive": 0.635357,
+        "naive_lo": 0.567803,
+        "naive_hi": 0.696058,
+        "naive_verdict": "MISSED",
+        "corrected": 0.628729,
+        "lo": 0.561923,
+        "hi": 0.689011,
+        "noise_floor": 0.018152,
+        "verdict": "MISSED",
+        "why": "understated -- interval sits entirely below the truth"
+      },
+      {
+        "factor": "ref_domains_log",
+        "label": "Referring root domains (log)",
+        "true": 0.409091,
+        "naive": 0.351856,
+        "naive_lo": 0.297857,
+        "naive_hi": 0.411839,
+        "naive_verdict": "RECOVERED",
+        "corrected": 0.353712,
+        "lo": 0.300032,
+        "hi": 0.412265,
+        "noise_floor": 0.018003,
+        "verdict": "RECOVERED",
+        "why": "95% interval covers the truth"
+      },
+      {
+        "factor": "brand_demand",
+        "label": "Branded search demand",
+        "true": 0.181818,
+        "naive": 0.208563,
+        "naive_lo": 0.146918,
+        "naive_hi": 0.271015,
+        "naive_verdict": "RECOVERED",
+        "corrected": 0.203712,
+        "lo": 0.143682,
+        "hi": 0.265141,
+        "noise_floor": 0.018449,
+        "verdict": "RECOVERED",
+        "why": "95% interval covers the truth"
+      },
+      {
+        "factor": "content_depth_rel",
+        "label": "Content depth vs SERP median",
+        "true": 0.840909,
+        "naive": 0.16278,
+        "naive_lo": 0.092245,
+        "naive_hi": 0.231287,
+        "naive_verdict": "MISSED",
+        "corrected": 0.747987,
+        "lo": 0.422692,
+        "hi": 1.058409,
+        "noise_floor": 0.023431,
+        "verdict": "RECOVERED",
+        "why": "95% interval covers the truth"
+      },
+      {
+        "factor": "eeat_score",
+        "label": "E-E-A-T rubric score",
+        "true": 0.340909,
+        "naive": 0.301079,
+        "naive_lo": 0.237681,
+        "naive_hi": 0.362379,
+        "naive_verdict": "RECOVERED",
+        "corrected": 0.296821,
+        "lo": 0.235516,
+        "hi": 0.357125,
+        "noise_floor": 0.021778,
+        "verdict": "RECOVERED",
+        "why": "95% interval covers the truth"
+      },
+      {
+        "factor": "freshness_gap",
+        "label": "Date honesty gap",
+        "true": 0.113636,
+        "naive": 0.14641,
+        "naive_lo": 0.092293,
+        "naive_hi": 0.205104,
+        "naive_verdict": "RECOVERED",
+        "corrected": 0.138667,
+        "lo": 0.084409,
+        "hi": 0.194314,
+        "noise_floor": 0.023243,
+        "verdict": "RECOVERED",
+        "why": "95% interval covers the truth"
+      },
+      {
+        "factor": "schema_coverage",
+        "label": "Structured data coverage",
+        "true": 0.054545,
+        "naive": 0.036192,
+        "naive_lo": 0.00236,
+        "naive_hi": 0.085968,
+        "naive_verdict": "RECOVERED",
+        "corrected": 0.037418,
+        "lo": 0.003599,
+        "hi": 0.08628,
+        "noise_floor": 0.018096,
+        "verdict": "RECOVERED",
+        "why": "95% interval covers the truth"
+      },
+      {
+        "factor": "residual_ctr",
+        "label": "Residual CTR",
+        "true": 0.590909,
+        "naive": 0.202036,
+        "naive_lo": 0.149482,
+        "naive_hi": 0.259367,
+        "naive_verdict": "MISSED",
+        "corrected": 0.235493,
+        "lo": 0.182544,
+        "hi": 0.29352,
+        "noise_floor": 0.019631,
+        "verdict": "MISSED",
+        "why": "understated -- interval sits entirely below the truth"
+      },
+      {
+        "factor": "cwv_inp",
+        "label": "INP (field)",
+        "true": 0.036364,
+        "naive": 0.067169,
+        "naive_lo": 0.01081,
+        "naive_hi": 0.12361,
+        "naive_verdict": "RECOVERED",
+        "corrected": 0.060316,
+        "lo": 0.008624,
+        "hi": 0.116801,
+        "noise_floor": 0.018971,
+        "verdict": "RECOVERED",
+        "why": "95% interval covers the truth"
+      },
+      {
+        "factor": "kw_density",
+        "label": "Keyword density",
+        "true": 0.0,
+        "naive": 0.337725,
+        "naive_lo": 0.270674,
+        "naive_hi": 0.40906,
+        "naive_verdict": "FALSE POSITIVE",
+        "corrected": 0.013481,
+        "lo": 0.005548,
+        "hi": 0.223912,
+        "noise_floor": 0.02348,
+        "verdict": "CLEAN",
+        "why": "correctly found nothing"
+      }
+    ],
+    "eta_true": 1.0,
+    "eta_hat": 1.08209,
+    "bundle": {
+      "true": 0.840909,
+      "naive": [
+        0.500505,
+        0.436395,
+        0.565784
+      ],
+      "corrected": [
+        0.761469,
+        0.610313,
+        1.197716
+      ]
+    },
+    "n_queries": 1200,
+    "n_boot": 300
+  },
+  "separation": {
+    "a": "content_depth_rel",
+    "b": "host_pagerank",
+    "label_a": "Content depth vs SERP median",
+    "label_b": "Host-graph PageRank",
+    "true_a": 0.840909,
+    "true_b": 0.727273,
+    "pilot": [
+      {
+        "pipeline": "naive",
+        "n_queries": 1200,
+        "est_a": 0.16278,
+        "est_b": 0.635357,
+        "diff_lo": -0.578419,
+        "diff_hi": -0.375638,
+        "separated": true,
+        "n_required": 103
+      },
+      {
+        "pipeline": "corrected",
+        "n_queries": 1200,
+        "est_a": 0.747987,
+        "est_b": 0.628729,
+        "diff_lo": -0.22847,
+        "diff_hi": 0.44602,
+        "separated": false,
+        "n_required": 18517
+      }
+    ],
+    "scale": {
+      "n_queries": 19000,
+      "required": 18517,
+      "est_a": 0.801695,
+      "est_b": 0.618853,
+      "diff_lo": 0.092134,
+      "diff_hi": 0.270703,
+      "separated": true,
+      "rows": [
+        {
+          "factor": "semantic_sim",
+          "true": 1.0,
+          "est": 1.0,
+          "lo": 1.0,
+          "hi": 1.0,
+          "verdict": "RECOVERED"
+        },
+        {
+          "factor": "title_match",
+          "true": 0.25,
+          "est": 0.201434,
+          "lo": 0.189751,
+          "hi": 0.215745,
+          "verdict": "MISSED"
+        },
+        {
+          "factor": "host_pagerank",
+          "true": 0.727273,
+          "est": 0.618853,
+          "lo": 0.604548,
+          "hi": 0.635276,
+          "verdict": "MISSED"
+        },
+        {
+          "factor": "ref_domains_log",
+          "true": 0.409091,
+          "est": 0.339046,
+          "lo": 0.321733,
+          "hi": 0.351838,
+          "verdict": "MISSED"
+        },
+        {
+          "factor": "brand_demand",
+          "true": 0.181818,
+          "est": 0.177057,
+          "lo": 0.165347,
+          "hi": 0.190906,
+          "verdict": "RECOVERED"
+        },
+        {
+          "factor": "content_depth_rel",
+          "true": 0.840909,
+          "est": 0.801695,
+          "lo": 0.708337,
+          "hi": 0.883964,
+          "verdict": "RECOVERED"
+        },
+        {
+          "factor": "eeat_score",
+          "true": 0.340909,
+          "est": 0.277934,
+          "lo": 0.264917,
+          "hi": 0.292454,
+          "verdict": "MISSED"
+        },
+        {
+          "factor": "freshness_gap",
+          "true": 0.113636,
+          "est": 0.105759,
+          "lo": 0.089158,
+          "hi": 0.118927,
+          "verdict": "RECOVERED"
+        },
+        {
+          "factor": "schema_coverage",
+          "true": 0.054545,
+          "est": 0.05029,
+          "lo": 0.035792,
+          "hi": 0.063757,
+          "verdict": "RECOVERED"
+        },
+        {
+          "factor": "residual_ctr",
+          "true": 0.590909,
+          "est": 0.464121,
+          "lo": 0.451037,
+          "hi": 0.479408,
+          "verdict": "MISSED"
+        },
+        {
+          "factor": "cwv_inp",
+          "true": 0.036364,
+          "est": 0.039516,
+          "lo": 0.02426,
+          "hi": 0.050577,
+          "verdict": "RECOVERED"
+        },
+        {
+          "factor": "kw_density",
+          "true": 0.0,
+          "est": 0.031026,
+          "lo": 0.002021,
+          "hi": 0.08394,
+          "verdict": "FALSE POSITIVE"
+        }
+      ]
+    }
+  },
+  "heads": {
+    "rows": [
+      {
+        "model": "random ordering",
+        "ndcg10": 0.626006,
+        "pair_acc": 0.505952,
+        "kendall_tau": 0.019877
+      },
+      {
+        "model": "semantic similarity only",
+        "ndcg10": 0.731726,
+        "pair_acc": 0.621746,
+        "kendall_tau": 0.210741
+      },
+      {
+        "model": "referring domains only",
+        "ndcg10": 0.64803,
+        "pair_acc": 0.537937,
+        "kendall_tau": 0.065926
+      },
+      {
+        "model": "head 1: pairwise logistic",
+        "ndcg10": 0.772005,
+        "pair_acc": 0.681746,
+        "kendall_tau": 0.311975
+      },
+      {
+        "model": "head 2: sklearn HistGradientBoosting",
+        "ndcg10": 0.765714,
+        "pair_acc": 0.671429,
+        "kendall_tau": 0.288642
+      }
+    ],
+    "linear_ok": true,
+    "message": "the linear head BEATS the boosted head by 0.8% -- there is no non-linearity here for trees to find, so scalar weights are not just quotable, they are the better model"
+  },
+  "clusters": {
+    "ari": 0.955898,
+    "rows": [
+      {
+        "cluster": "ecommerce",
+        "factor": "semantic_sim",
+        "index": 1.0,
+        "n_queries": 1071
+      },
+      {
+        "cluster": "ecommerce",
+        "factor": "title_match",
+        "index": 0.207408,
+        "n_queries": 1071
+      },
+      {
+        "cluster": "ecommerce",
+        "factor": "host_pagerank",
+        "index": 0.56686,
+        "n_queries": 1071
+      },
+      {
+        "cluster": "ecommerce",
+        "factor": "ref_domains_log",
+        "index": 0.352764,
+        "n_queries": 1071
+      },
+      {
+        "cluster": "ecommerce",
+        "factor": "brand_demand",
+        "index": 0.141311,
+        "n_queries": 1071
+      },
+      {
+        "cluster": "ecommerce",
+        "factor": "content_depth_rel",
+        "index": 0.134703,
+        "n_queries": 1071
+      },
+      {
+        "cluster": "ecommerce",
+        "factor": "eeat_score",
+        "index": 0.27646,
+        "n_queries": 1071
+      },
+      {
+        "cluster": "ecommerce",
+        "factor": "freshness_gap",
+        "index": 0.082983,
+        "n_queries": 1071
+      },
+      {
+        "cluster": "ecommerce",
+        "factor": "schema_coverage",
+        "index": 0.156952,
+        "n_queries": 1071
+      },
+      {
+        "cluster": "ecommerce",
+        "factor": "residual_ctr",
+        "index": 0.437838,
+        "n_queries": 1071
+      },
+      {
+        "cluster": "ecommerce",
+        "factor": "cwv_inp",
+        "index": 0.053991,
+        "n_queries": 1071
+      },
+      {
+        "cluster": "ecommerce",
+        "factor": "kw_density",
+        "index": 0.290861,
+        "n_queries": 1071
+      },
+      {
+        "cluster": "informational",
+        "factor": "semantic_sim",
+        "index": 1.0,
+        "n_queries": 976
+      },
+      {
+        "cluster": "informational",
+        "factor": "title_match",
+        "index": 0.180267,
+        "n_queries": 976
+      },
+      {
+        "cluster": "informational",
+        "factor": "host_pagerank",
+        "index": 0.518836,
+        "n_queries": 976
+      },
+      {
+        "cluster": "informational",
+        "factor": "ref_domains_log",
+        "index": 0.237194,
+        "n_queries": 976
+      },
+      {
+        "cluster": "informational",
+        "factor": "brand_demand",
+        "index": 0.176207,
+        "n_queries": 976
+      },
+      {
+        "cluster": "informational",
+        "factor": "content_depth_rel",
+        "index": 0.233017,
+        "n_queries": 976
+      },
+      {
+        "cluster": "informational",
+        "factor": "eeat_score",
+        "index": 0.277061,
+        "n_queries": 976
+      },
+      {
+        "cluster": "informational",
+        "factor": "freshness_gap",
+        "index": 0.177578,
+        "n_queries": 976
+      },
+      {
+        "cluster": "informational",
+        "factor": "schema_coverage",
+        "index": 0.020096,
+        "n_queries": 976
+      },
+      {
+        "cluster": "informational",
+        "factor": "residual_ctr",
+        "index": 0.212628,
+        "n_queries": 976
+      },
+      {
+        "cluster": "informational",
+        "factor": "cwv_inp",
+        "index": 0.045056,
+        "n_queries": 976
+      },
+      {
+        "cluster": "informational",
+        "factor": "kw_density",
+        "index": 0.553965,
+        "n_queries": 976
+      },
+      {
+        "cluster": "local-service",
+        "factor": "semantic_sim",
+        "index": 1.0,
+        "n_queries": 1018
+      },
+      {
+        "cluster": "local-service",
+        "factor": "title_match",
+        "index": 0.237351,
+        "n_queries": 1018
+      },
+      {
+        "cluster": "local-service",
+        "factor": "host_pagerank",
+        "index": 0.373096,
+        "n_queries": 1018
+      },
+      {
+        "cluster": "local-service",
+        "factor": "ref_domains_log",
+        "index": 0.237409,
+        "n_queries": 1018
+      },
+      {
+        "cluster": "local-service",
+        "factor": "brand_demand",
+        "index": 0.264126,
+        "n_queries": 1018
+      },
+      {
+        "cluster": "local-service",
+        "factor": "content_depth_rel",
+        "index": 0.138709,
+        "n_queries": 1018
+      },
+      {
+        "cluster": "local-service",
+        "factor": "eeat_score",
+        "index": 0.171966,
+        "n_queries": 1018
+      },
+      {
+        "cluster": "local-service",
+        "factor": "freshness_gap",
+        "index": 0.089349,
+        "n_queries": 1018
+      },
+      {
+        "cluster": "local-service",
+        "factor": "schema_coverage",
+        "index": 0.014336,
+        "n_queries": 1018
+      },
+      {
+        "cluster": "local-service",
+        "factor": "residual_ctr",
+        "index": 0.495593,
+        "n_queries": 1018
+      },
+      {
+        "cluster": "local-service",
+        "factor": "cwv_inp",
+        "index": 0.040509,
+        "n_queries": 1018
+      },
+      {
+        "cluster": "local-service",
+        "factor": "kw_density",
+        "index": 0.289218,
+        "n_queries": 1018
+      },
+      {
+        "cluster": "ymyl-finance",
+        "factor": "semantic_sim",
+        "index": 1.0,
+        "n_queries": 935
+      },
+      {
+        "cluster": "ymyl-finance",
+        "factor": "title_match",
+        "index": 0.190274,
+        "n_queries": 935
+      },
+      {
+        "cluster": "ymyl-finance",
+        "factor": "host_pagerank",
+        "index": 1.261504,
+        "n_queries": 935
+      },
+      {
+        "cluster": "ymyl-finance",
+        "factor": "ref_domains_log",
+        "index": 0.582449,
+        "n_queries": 935
+      },
+      {
+        "cluster": "ymyl-finance",
+        "factor": "brand_demand",
+        "index": 0.229426,
+        "n_queries": 935
+      },
+      {
+        "cluster": "ymyl-finance",
+        "factor": "content_depth_rel",
+        "index": 0.22366,
+        "n_queries": 935
+      },
+      {
+        "cluster": "ymyl-finance",
+        "factor": "eeat_score",
+        "index": 0.565731,
+        "n_queries": 935
+      },
+      {
+        "cluster": "ymyl-finance",
+        "factor": "freshness_gap",
+        "index": 0.09797,
+        "n_queries": 935
+      },
+      {
+        "cluster": "ymyl-finance",
+        "factor": "schema_coverage",
+        "index": 0.016557,
+        "n_queries": 935
+      },
+      {
+        "cluster": "ymyl-finance",
+        "factor": "residual_ctr",
+        "index": 0.128969,
+        "n_queries": 935
+      },
+      {
+        "cluster": "ymyl-finance",
+        "factor": "cwv_inp",
+        "index": 0.11035,
+        "n_queries": 935
+      },
+      {
+        "cluster": "ymyl-finance",
+        "factor": "kw_density",
+        "index": 0.379664,
+        "n_queries": 935
+      }
+    ],
+    "headline": {
+      "factor": "host_pagerank",
+      "label": "Host-graph PageRank",
+      "high": "ymyl-finance",
+      "low": "local-service",
+      "high_val": 1.261504,
+      "low_val": 0.373096,
+      "measured_ratio": 3.381179,
+      "true_ratio": 4.363636
+    },
+    "clusters": [
+      "ecommerce",
+      "informational",
+      "local-service",
+      "ymyl-finance"
+    ]
+  },
+  "causal": {
+    "rows": [
+      {
+        "factor": "semantic_sim",
+        "label": "Dense query-document similarity",
+        "true_weight": 1.0,
+        "fe_positions": -0.98437,
+        "matched_positions": -0.976748,
+        "lo": -1.005837,
+        "hi": -0.943806,
+        "effort": 3,
+        "effort_label": "weeks",
+        "per_effort": -0.325583
+      },
+      {
+        "factor": "title_match",
+        "label": "Title-query match",
+        "true_weight": 0.25,
+        "fe_positions": -0.194506,
+        "matched_positions": -0.163198,
+        "lo": -0.193264,
+        "hi": -0.127755,
+        "effort": 1,
+        "effort_label": "hours",
+        "per_effort": -0.163198
+      },
+      {
+        "factor": "host_pagerank",
+        "label": "Host-graph PageRank",
+        "true_weight": 0.727273,
+        "fe_positions": -0.603444,
+        "matched_positions": -0.545198,
+        "lo": -0.575223,
+        "hi": -0.511522,
+        "effort": 5,
+        "effort_label": "months, uncertain",
+        "per_effort": -0.10904
+      },
+      {
+        "factor": "ref_domains_log",
+        "label": "Referring root domains (log)",
+        "true_weight": 0.409091,
+        "fe_positions": -0.310046,
+        "matched_positions": -0.247416,
+        "lo": -0.284603,
+        "hi": -0.218059,
+        "effort": 5,
+        "effort_label": "months, uncertain",
+        "per_effort": -0.049483
+      },
+      {
+        "factor": "brand_demand",
+        "label": "Branded search demand",
+        "true_weight": 0.181818,
+        "fe_positions": -0.183266,
+        "matched_positions": -0.166589,
+        "lo": -0.196802,
+        "hi": -0.135208,
+        "effort": 5,
+        "effort_label": "months, uncertain",
+        "per_effort": -0.033318
+      },
+      {
+        "factor": "content_depth_rel",
+        "label": "Content depth vs SERP median",
+        "true_weight": 0.840909,
+        "fe_positions": -0.170198,
+        "matched_positions": -0.260864,
+        "lo": -0.297015,
+        "hi": -0.226119,
+        "effort": 3,
+        "effort_label": "weeks",
+        "per_effort": -0.086955
+      },
+      {
+        "factor": "eeat_score",
+        "label": "E-E-A-T rubric score",
+        "true_weight": 0.340909,
+        "fe_positions": -0.29104,
+        "matched_positions": -0.265737,
+        "lo": -0.298308,
+        "hi": -0.233932,
+        "effort": 4,
+        "effort_label": "a quarter",
+        "per_effort": -0.066434
+      },
+      {
+        "factor": "freshness_gap",
+        "label": "Date honesty gap",
+        "true_weight": 0.113636,
+        "fe_positions": -0.113525,
+        "matched_positions": -0.112549,
+        "lo": -0.150214,
+        "hi": -0.079378,
+        "effort": 1,
+        "effort_label": "hours",
+        "per_effort": -0.112549
+      },
+      {
+        "factor": "schema_coverage",
+        "label": "Structured data coverage",
+        "true_weight": 0.054545,
+        "fe_positions": -0.035732,
+        "matched_positions": -0.044671,
+        "lo": -0.073909,
+        "hi": -0.013158,
+        "effort": 2,
+        "effort_label": "days",
+        "per_effort": -0.022335
+      },
+      {
+        "factor": "residual_ctr",
+        "label": "Residual CTR",
+        "true_weight": 0.590909,
+        "fe_positions": -0.33642,
+        "matched_positions": -0.255038,
+        "lo": -0.290746,
+        "hi": -0.221692,
+        "effort": 2,
+        "effort_label": "days",
+        "per_effort": -0.127519
+      },
+      {
+        "factor": "cwv_inp",
+        "label": "INP (field)",
+        "true_weight": 0.036364,
+        "fe_positions": -0.043356,
+        "matched_positions": -0.001507,
+        "lo": -0.033927,
+        "hi": 0.031315,
+        "effort": 3,
+        "effort_label": "weeks",
+        "per_effort": -0.000502
+      },
+      {
+        "factor": "kw_density",
+        "label": "Keyword density",
+        "true_weight": 0.0,
+        "fe_positions": -0.372726,
+        "matched_positions": -0.340521,
+        "lo": -0.37594,
+        "hi": -0.304631,
+        "effort": 1,
+        "effort_label": "hours",
+        "per_effort": -0.340521
+      }
+    ],
+    "n_queries": 4000,
+    "effort_note": "Effort is an agency judgement on a 1-5 scale, not a measured quantity. Every other number on this page is measured."
+  },
+  "experiments": {
+    "runs": [
+      {
+        "true": -0.6,
+        "est": -0.203056,
+        "lo": -0.616798,
+        "hi": 0.210686,
+        "significant": false,
+        "n_per_arm": 120,
+        "days": 28,
+        "mde": 0.7
+      },
+      {
+        "true": -0.6,
+        "est": -0.473292,
+        "lo": -0.75244,
+        "hi": -0.194145,
+        "significant": true,
+        "n_per_arm": 300,
+        "days": 28,
+        "mde": 0.4
+      }
+    ],
+    "coverage": 0.945,
+    "mde": [
+      {
+        "urls_per_arm": 30,
+        "mde_positions": 1.3
+      },
+      {
+        "urls_per_arm": 60,
+        "mde_positions": 1.0
+      },
+      {
+        "urls_per_arm": 120,
+        "mde_positions": 0.7
+      },
+      {
+        "urls_per_arm": 200,
+        "mde_positions": 0.5
+      },
+      {
+        "urls_per_arm": 300,
+        "mde_positions": 0.4
+      }
+    ]
+  },
+  "meta": {
+    "seed": 7,
+    "pilot_queries": 1200,
+    "scale_queries": 24000,
+    "runtime_s": 79.8,
+    "numpy": "2.4.4",
+    "pandas": "3.0.2",
+    "lightgbm": false,
+    "n_factors": 34,
+    "n_simulated": 12,
+    "generated": "2026-08-28 11:11 UTC"
+  },
+  "factors": [
+    {
+      "id": "semantic_sim",
+      "group": "relevance",
+      "label": "Dense query-document similarity",
+      "tier": "A",
+      "how": "bi-encoder cosine between query vector and page vector",
+      "source": "local sentence-transformer",
+      "cost": "$0 (CPU)",
+      "refresh": "on crawl",
+      "simulated": true,
+      "true_weight": 0.22,
+      "note": "The strongest single factor in every cluster we have modelled."
+    },
+    {
+      "id": "passage_max_sim",
+      "group": "relevance",
+      "label": "Passage-level max similarity",
+      "tier": "A",
+      "how": "chunk page into 90-word passages, take max cosine against query",
+      "source": "local sentence-transformer",
+      "cost": "$0 (CPU)",
+      "refresh": "on crawl",
+      "simulated": false,
+      "true_weight": 0.0,
+      "note": "Predicts AI Overview citation far better than page-level similarity does."
+    },
+    {
+      "id": "bm25_body",
+      "group": "relevance",
+      "label": "BM25 lexical match (body)",
+      "tier": "A",
+      "how": "classic BM25 over tokenised body text against query terms",
+      "source": "own index",
+      "cost": "$0",
+      "refresh": "on crawl",
+      "simulated": false,
+      "true_weight": 0.0,
+      "note": ""
+    },
+    {
+      "id": "title_match",
+      "group": "relevance",
+      "label": "Title-query match",
+      "tier": "B",
+      "how": "normalised token overlap plus order penalty, title against query",
+      "source": "SERP + crawl",
+      "cost": "$0",
+      "refresh": "on crawl",
+      "simulated": true,
+      "true_weight": 0.055,
+      "note": "The leak exposes a titlematchScore attribute."
+    },
+    {
+      "id": "topic_coverage_gap",
+      "group": "relevance",
+      "label": "Topic coverage gap vs SERP",
+      "tier": "B",
+      "how": "entities present in the SERP centroid but missing from this page",
+      "source": "crawl + NER",
+      "cost": "$0.40",
+      "refresh": "monthly",
+      "simulated": false,
+      "true_weight": 0.0,
+      "note": "Actionable by construction: it names the missing subtopics."
+    },
+    {
+      "id": "intent_match",
+      "group": "relevance",
+      "label": "Query intent match",
+      "tier": "A",
+      "how": "classify query intent, classify page type, score the agreement",
+      "source": "SERP features + crawl",
+      "cost": "$0",
+      "refresh": "on crawl",
+      "simulated": false,
+      "true_weight": 0.0,
+      "note": ""
+    },
+    {
+      "id": "host_pagerank",
+      "group": "authority",
+      "label": "Host-graph PageRank",
+      "tier": "B",
+      "how": "power iteration on our own host graph (scipy.sparse)",
+      "source": "Common Crawl host graph",
+      "cost": "$0 after build",
+      "refresh": "quarterly",
+      "simulated": true,
+      "true_weight": 0.16,
+      "note": "The leak exposes siteAuthority. We compute our own rather than buying a vendor's black box."
+    },
+    {
+      "id": "ref_domains_log",
+      "group": "authority",
+      "label": "Referring root domains (log)",
+      "tier": "A",
+      "how": "log1p of distinct linking root domains",
+      "source": "Ahrefs / Majestic / Common Crawl",
+      "cost": "$1.10",
+      "refresh": "monthly",
+      "simulated": true,
+      "true_weight": 0.09,
+      "note": ""
+    },
+    {
+      "id": "topical_link_share",
+      "group": "authority",
+      "label": "Topical relevance of links",
+      "tier": "B",
+      "how": "share of referring domains inside the same topic cluster",
+      "source": "link data + clustering",
+      "cost": "$0.20",
+      "refresh": "monthly",
+      "simulated": false,
+      "true_weight": 0.0,
+      "note": "Separates 1,000 irrelevant links from 50 relevant ones."
+    },
+    {
+      "id": "host_age",
+      "group": "authority",
+      "label": "Host age",
+      "tier": "B",
+      "how": "years since the host was first observed in a crawl",
+      "source": "Wayback / Common Crawl history",
+      "cost": "$0",
+      "refresh": "yearly",
+      "simulated": false,
+      "true_weight": 0.0,
+      "note": "The leak exposes hostAge, used mainly in a spam context."
+    },
+    {
+      "id": "brand_demand",
+      "group": "authority",
+      "label": "Branded search demand",
+      "tier": "B",
+      "how": "monthly search volume for brand terms, log-scaled",
+      "source": "keyword API",
+      "cost": "$0.05",
+      "refresh": "monthly",
+      "simulated": true,
+      "true_weight": 0.04,
+      "note": "Cheap, strong, and almost nobody tracks it. Our best single proxy for the site-level trust term."
+    },
+    {
+      "id": "content_depth_rel",
+      "group": "quality",
+      "label": "Content depth vs SERP median",
+      "tier": "A",
+      "how": "page word count divided by the median of the top 10 for the query",
+      "source": "crawl",
+      "cost": "$0",
+      "refresh": "on crawl",
+      "simulated": true,
+      "true_weight": 0.185,
+      "note": "RELATIVE, not absolute. Absolute word count is on the rejected list; the ratio is one of the strongest factors."
+    },
+    {
+      "id": "info_gain",
+      "group": "quality",
+      "label": "Information gain / originality",
+      "tier": "B",
+      "how": "1 minus max cosine between this page and the other top-10 pages",
+      "source": "crawl + embeddings",
+      "cost": "$0",
+      "refresh": "on crawl",
+      "simulated": false,
+      "true_weight": 0.0,
+      "note": "The leak exposes OriginalContentScore."
+    },
+    {
+      "id": "eeat_score",
+      "group": "quality",
+      "label": "E-E-A-T rubric score",
+      "tier": "A",
+      "how": "an LLM scores the page against Google's Quality Rater Guidelines, calibrated against human raters with Krippendorff alpha reported",
+      "source": "LLM API + human sample",
+      "cost": "$3.00",
+      "refresh": "quarterly",
+      "simulated": true,
+      "true_weight": 0.075,
+      "note": "Never shipped without its inter-rater reliability number."
+    },
+    {
+      "id": "author_entity",
+      "group": "quality",
+      "label": "Author entity resolution",
+      "tier": "A",
+      "how": "byline present AND resolvable to a Knowledge Graph entity",
+      "source": "crawl + entity API",
+      "cost": "$0.30",
+      "refresh": "quarterly",
+      "simulated": false,
+      "true_weight": 0.0,
+      "note": ""
+    },
+    {
+      "id": "freshness_gap",
+      "group": "quality",
+      "label": "Date honesty gap",
+      "tier": "B",
+      "how": "disagreement between the visible byline date, the markup date and the date inferred from the content itself",
+      "source": "crawl",
+      "cost": "$0",
+      "refresh": "on crawl",
+      "simulated": true,
+      "true_weight": 0.025,
+      "note": "The leak exposes bylineDate, syntacticDate and semanticDate as three separate fields -- faked freshness is detectable."
+    },
+    {
+      "id": "schema_coverage",
+      "group": "quality",
+      "label": "Structured data coverage",
+      "tier": "A",
+      "how": "count and validity of schema.org types relevant to the page type",
+      "source": "crawl",
+      "cost": "$0",
+      "refresh": "on crawl",
+      "simulated": true,
+      "true_weight": 0.012,
+      "note": ""
+    },
+    {
+      "id": "ad_density_atf",
+      "group": "quality",
+      "label": "Above-the-fold ad density",
+      "tier": "A",
+      "how": "share of the first viewport occupied by ads or interstitials",
+      "source": "headless render",
+      "cost": "$1.80",
+      "refresh": "quarterly",
+      "simulated": false,
+      "true_weight": 0.0,
+      "note": ""
+    },
+    {
+      "id": "residual_ctr",
+      "group": "interaction",
+      "label": "Residual CTR",
+      "tier": "B",
+      "how": "observed CTR minus the expected CTR for that position",
+      "source": "GSC (own sites) / clickstream panel",
+      "cost": "$0",
+      "refresh": "weekly",
+      "simulated": true,
+      "true_weight": 0.13,
+      "note": "The closest public proxy for the leaked goodClicks. Position bias makes the naive version badly biased -- this is the factor the calibration harness catches us getting wrong."
+    },
+    {
+      "id": "pogo_rate",
+      "group": "interaction",
+      "label": "Pogo-sticking rate",
+      "tier": "B",
+      "how": "share of sessions returning to the SERP within 15 seconds",
+      "source": "clickstream panel",
+      "cost": "$4.00",
+      "refresh": "monthly",
+      "simulated": false,
+      "true_weight": 0.0,
+      "note": "Proxy for the leaked badClicks."
+    },
+    {
+      "id": "last_click_share",
+      "group": "interaction",
+      "label": "Last-longest-click share",
+      "tier": "B",
+      "how": "share of query sessions where this URL is the terminal click",
+      "source": "clickstream panel",
+      "cost": "$4.00",
+      "refresh": "monthly",
+      "simulated": false,
+      "true_weight": 0.0,
+      "note": "Proxy for lastLongestClicks, the strongest of the NavBoost click families in the leaked schema."
+    },
+    {
+      "id": "url_nav_demand",
+      "group": "interaction",
+      "label": "Navigational demand for URL",
+      "tier": "B",
+      "how": "volume of navigational queries that resolve to this URL",
+      "source": "keyword API",
+      "cost": "$0.05",
+      "refresh": "monthly",
+      "simulated": false,
+      "true_weight": 0.0,
+      "note": ""
+    },
+    {
+      "id": "return_visit_rate",
+      "group": "interaction",
+      "label": "Return visit rate",
+      "tier": "B",
+      "how": "share of visitors returning within 30 days",
+      "source": "GSC / GA, own sites only",
+      "cost": "$0",
+      "refresh": "monthly",
+      "simulated": false,
+      "true_weight": 0.0,
+      "note": "Only available for client sites. That asymmetry is exactly why an agency can model this and a tool vendor cannot."
+    },
+    {
+      "id": "cwv_lcp",
+      "group": "technical",
+      "label": "LCP (field)",
+      "tier": "A",
+      "how": "75th percentile Largest Contentful Paint, field data",
+      "source": "CrUX API",
+      "cost": "$0",
+      "refresh": "monthly",
+      "simulated": false,
+      "true_weight": 0.0,
+      "note": ""
+    },
+    {
+      "id": "cwv_inp",
+      "group": "technical",
+      "label": "INP (field)",
+      "tier": "A",
+      "how": "75th percentile Interaction to Next Paint, field data",
+      "source": "CrUX API",
+      "cost": "$0",
+      "refresh": "monthly",
+      "simulated": true,
+      "true_weight": 0.008,
+      "note": "Replaced FID in March 2024. Small but real, and a tie-breaker in crowded SERPs."
+    },
+    {
+      "id": "cwv_cls",
+      "group": "technical",
+      "label": "CLS (field)",
+      "tier": "A",
+      "how": "75th percentile Cumulative Layout Shift, field data",
+      "source": "CrUX API",
+      "cost": "$0",
+      "refresh": "monthly",
+      "simulated": false,
+      "true_weight": 0.0,
+      "note": ""
+    },
+    {
+      "id": "indexability",
+      "group": "technical",
+      "label": "Indexability & canonical health",
+      "tier": "A",
+      "how": "robots, noindex, canonical conflicts, soft-404 detection",
+      "source": "crawl + GSC",
+      "cost": "$0",
+      "refresh": "weekly",
+      "simulated": false,
+      "true_weight": 0.0,
+      "note": "A binary gate, not a weight. A page that fails this has no ranking at all, so it is excluded from the model rather than scored by it."
+    },
+    {
+      "id": "mobile_parity",
+      "group": "technical",
+      "label": "Mobile content parity",
+      "tier": "A",
+      "how": "content diff between the mobile and desktop render",
+      "source": "headless render",
+      "cost": "$1.80",
+      "refresh": "quarterly",
+      "simulated": false,
+      "true_weight": 0.0,
+      "note": ""
+    },
+    {
+      "id": "ttfb",
+      "group": "technical",
+      "label": "Time to first byte",
+      "tier": "A",
+      "how": "server response time measured from three geographies",
+      "source": "own probes",
+      "cost": "$0",
+      "refresh": "weekly",
+      "simulated": false,
+      "true_weight": 0.0,
+      "note": ""
+    },
+    {
+      "id": "serp_volatility",
+      "group": "serp",
+      "label": "SERP volatility",
+      "tier": "A",
+      "how": "mean rank churn of the top 10 over a trailing 30 days",
+      "source": "own SERP history",
+      "cost": "$0",
+      "refresh": "daily",
+      "simulated": false,
+      "true_weight": 0.0,
+      "note": "Tells the client which keywords are winnable at all."
+    },
+    {
+      "id": "organic_compression",
+      "group": "serp",
+      "label": "Organic space compression",
+      "tier": "A",
+      "how": "ad slots plus AI Overview plus other features above result one",
+      "source": "SERP API",
+      "cost": "$0",
+      "refresh": "daily",
+      "simulated": false,
+      "true_weight": 0.0,
+      "note": "Not a ranking factor -- a traffic factor. Position 3 is worth very different amounts on two different SERPs."
+    },
+    {
+      "id": "result_type_bias",
+      "group": "serp",
+      "label": "Preferred result type",
+      "tier": "A",
+      "how": "distribution of page types Google already rewards for this query",
+      "source": "SERP API + classifier",
+      "cost": "$0",
+      "refresh": "weekly",
+      "simulated": false,
+      "true_weight": 0.0,
+      "note": ""
+    },
+    {
+      "id": "host_crowding",
+      "group": "serp",
+      "label": "Host crowding",
+      "tier": "B",
+      "how": "number of results from the same host already in the top 10",
+      "source": "SERP API",
+      "cost": "$0",
+      "refresh": "daily",
+      "simulated": false,
+      "true_weight": 0.0,
+      "note": "A one-sided demotion, not a symmetric weight."
+    },
+    {
+      "id": "site_serp_presence",
+      "group": "serp",
+      "label": "Own site's other placements",
+      "tier": "A",
+      "how": "whether this site appears elsewhere on the same SERP",
+      "source": "SERP API",
+      "cost": "$0",
+      "refresh": "daily",
+      "simulated": false,
+      "true_weight": 0.0,
+      "note": ""
+    }
+  ],
+  "rejected": [
+    {
+      "factor": "Keyword density",
+      "why": "No evidence in any tier. Collinear with content depth, so it looks predictive in any naive model. We use it as our decoy."
+    },
+    {
+      "factor": "Absolute word count",
+      "why": "Predictive only because it proxies depth-versus-competitors. Use the ratio; the raw number leads clients to pad pages."
+    },
+    {
+      "factor": "Bounce rate from Analytics",
+      "why": "Google does not see your GA. Not a signal, and our own measurement of it is mostly a session-definition artefact."
+    },
+    {
+      "factor": "Domain Authority as a lever",
+      "why": "Fine as a covariate, fatal as a target. It is a vendor's model output, not a Google input -- optimising it optimises Moz's model, not Google's."
+    },
+    {
+      "factor": "LSI keywords",
+      "why": "Latent Semantic Indexing is a 1988 technique Google has never claimed to use. Dense retrieval superseded the idea entirely."
+    },
+    {
+      "factor": "Meta keywords and exact-match domains",
+      "why": "Dead since 2009 and 2012 respectively; the leak shows an explicit exactMatchDomainDemotion attribute."
+    }
+  ],
+  "groups": {
+    "relevance": "Query-document relevance",
+    "authority": "Site-level authority",
+    "quality": "Page-level quality",
+    "interaction": "User-interaction proxies",
+    "technical": "Technical delivery",
+    "serp": "SERP competitive context"
+  },
+  "tiers": {
+    "A": "Confirmed by Google",
+    "B": "DOJ trial record / 2024 API leak",
+    "C": "Industry folklore -- not tracked"
+  }
+}

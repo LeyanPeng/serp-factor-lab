@@ -1,0 +1,16 @@
+# Everything here except lightgbm ships with any scientific Python install.
+# run_demo.py runs without lightgbm -- it falls back to scikit-learn and says so.
+numpy>=1.26
+pandas>=2.0
+scipy>=1.11
+scikit-learn>=1.3
+statsmodels>=0.14
+matplotlib>=3.7
+
+# optional: faster ranking head (LightGBM lambdarank instead of the fallback)
+# lightgbm>=4.0
+
+# optional: only needed by collect.py, the live data path
+# httpx>=0.27
+# selectolax>=0.3
+# pyarrow>=15
