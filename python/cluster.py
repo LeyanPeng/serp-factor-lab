@@ -85,4 +85,7 @@ def spread_report(wbc: pd.DataFrame, top_n: int = 6) -> pd.DataFrame:
     p = wbc.pivot(index="factor", columns="cluster", values="index")
     p["ratio"] = p.max(axis=1) / p.min(axis=1).clip(lower=1e-6)
     p["spread"] = p.drop(columns="ratio").max(axis=1) - p.drop(columns="ratio").min(axis=1)
-    return p.sort_values("spread", ascending=False).head(top_n)
+    out = p.sort_values("spread", ascending=False).head(top_n)
+    # clear axis names: pandas prints them as a stray header row that
+    # breaks the alignment of the table in the terminal report
+    return out.rename_axis(index=None, columns=None)

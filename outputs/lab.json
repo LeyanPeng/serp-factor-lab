@@ -883,13 +883,13 @@
     "seed": 7,
     "pilot_queries": 1200,
     "scale_queries": 24000,
-    "runtime_s": 79.8,
+    "runtime_s": 33.1,
     "numpy": "2.4.4",
     "pandas": "3.0.2",
     "lightgbm": false,
     "n_factors": 34,
     "n_simulated": 12,
-    "generated": "2026-08-28 11:11 UTC"
+    "generated": "2026-08-28 17:55 UTC"
   },
   "factors": [
     {
