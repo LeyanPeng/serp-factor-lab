@@ -31,3 +31,6 @@ docs/email.md
 # NOTE: GitHub Pages publishes main:/docs. Anything committed under docs/
 # becomes publicly readable. Add private notes to the ignore list ABOVE
 # before creating them.
+
+# local only -- spoken prep for the call
+docs/talk-track-en.md
