@@ -61,6 +61,16 @@ FACTORS: list[Factor] = [
            "entities present in the SERP centroid but missing from this page",
            "crawl + NER", "$0.40", "monthly",
            note="Actionable by construction: it names the missing subtopics."),
+    Factor("kg_entity_coverage", "relevance", "Knowledge-graph entity coverage",
+           "B",
+           "PageRank over the entity graph built from the top-10 pages, then "
+           "the share of that salience mass this page carries",
+           "Cloud NL analyzeEntities + Wikidata", "$1.00 / 1k pages", "monthly",
+           simulated=True, true_weight=0.145,
+           note="A search engine ranks entities, not strings. This is the only "
+                "factor in the list whose by-product is a work order rather "
+                "than a score -- the same graph names the entities the page "
+                "is missing. See knowledge_graph.py."),
     Factor("intent_match", "relevance", "Query intent match", "A",
            "classify query intent, classify page type, score the agreement",
            "SERP features + crawl", "$0", "on crawl"),

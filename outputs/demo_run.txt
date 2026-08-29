@@ -1,0 +1,210 @@
+==============================================================================
+ SERP FACTOR LAB -- calibration run                                           
+ seed=7   pilot panel=1,200 queries   scale-up=48,000 queries
+ every number below is computed now, none of it is hard-coded
+==============================================================================
+
+==============================================================================
+ [1/7]  CALIBRATION -- does the estimator recover weights we set?
+         the only honest way to put an error bar on a number nobody can verify
+==============================================================================
+                         factor   true  naive  naive_verdict  corrected  ci_lo  ci_hi   verdict
+Dense query-document similarity  1.000  1.000      RECOVERED      1.000  1.000  1.000 RECOVERED
+   Content depth vs SERP median  0.841  0.131         MISSED      0.654  0.353  1.001 RECOVERED
+            Host-graph PageRank  0.727  0.574         MISSED      0.564  0.505  0.628    MISSED
+Knowledge-graph entity coverage  0.659  0.498         MISSED      0.498  0.435  0.557    MISSED
+                   Residual CTR  0.591  0.161         MISSED      0.447  0.385  0.505    MISSED
+   Referring root domains (log)  0.409  0.337         MISSED      0.334  0.277  0.392    MISSED
+           E-E-A-T rubric score  0.341  0.283      RECOVERED      0.283  0.227  0.345 RECOVERED
+              Title-query match  0.250  0.137         MISSED      0.137  0.078  0.202    MISSED
+          Branded search demand  0.182  0.149      RECOVERED      0.148  0.092  0.208 RECOVERED
+               Date honesty gap  0.114  0.085      RECOVERED      0.084  0.023  0.134 RECOVERED
+       Structured data coverage  0.055  0.049      RECOVERED      0.058  0.004  0.117 RECOVERED
+                    INP (field)  0.036  0.052      RECOVERED      0.050  0.004  0.108 RECOVERED
+                Keyword density  0.000  0.334 FALSE POSITIVE      0.039  0.005  0.226     CLEAN
+
+  position-bias exponent: true 1.00, estimated 0.988 from the 5% randomised slice
+  collinear bundle (content depth + keyword density), true 0.841
+      naive     0.466 [0.397, 0.537]
+      corrected 0.692 [0.547, 1.156]   <- the bundle is trustworthy even when its parts are not
+
+  READ THIS:
+    The uncorrected pipeline -- the one every SEO tool ships -- reports
+    keyword density at 0.33 and content depth at 0.13. The true
+    weights are 0.00 and 0.84. It does not merely
+    get the sizes wrong, it inverts the ranking, and it does so with
+    a tight confidence interval. Confidently wrong is worse than unsure.
+
+==============================================================================
+ [2/7]  THE 0.84 vs 0.73 QUESTION
+         in this harness those two numbers are the ground truth, by construction
+==============================================================================
+  true importance:  Content depth vs SERP median = 0.84
+                    Host-graph PageRank = 0.73
+
+ pipeline  n_queries  est_a  est_b  diff_lo  diff_hi  separated  n_required
+    naive       1200  0.131  0.574   -0.524   -0.335       True         115
+corrected       1200  0.654  0.564   -0.216    0.452      False       36230
+
+  The naive pipeline is certain, and it has the order backwards.
+  The corrected pipeline says it cannot tell them apart at this panel
+  size, and prices the answer. That sentence is the product.
+
+  scale-up check at 37,000 queries -- the size the power calculation asked for:
+    Content depth vs SERP median 0.76  vs  Host-graph PageRank 0.59
+    difference 95% CI [+0.10, +0.24]   separated = True
+    the power calculation asked for ~36,230 queries to make this call. At 37,000 the call is made -- the prediction held.
+    click factor, still attenuated: 0.42 vs true 0.59 -- more data narrows intervals,
+    it does not remove bias. Those are different problems.
+
+==============================================================================
+ [3/7]  L1 -- does it rank like Google?
+         held out by query, never by row; compared against baselines that are honest
+==============================================================================
+                               model  ndcg10  pair_acc  kendall_tau
+                     random ordering   0.626     0.506        0.020
+            semantic similarity only   0.725     0.628        0.209
+              referring domains only   0.652     0.533        0.060
+           head 1: pairwise logistic   0.774     0.684        0.310
+head 2: sklearn HistGradientBoosting   0.765     0.669        0.287
+
+  linearity rule: the linear head BEATS the boosted head by 1.1% -- there is no non-linearity here for trees to find, so scalar weights are not just quotable, they are the better model
+
+==============================================================================
+ [4/7]  L2 -- does it travel?
+         clusters discovered from SERP shape, never assumed
+==============================================================================
+  intent clusters recovered without labels: adjusted Rand = 0.950
+
+                    ecommerce  informational  local-service  ymyl-finance  ratio  spread
+host_pagerank           0.494          0.491          0.320         1.247  3.901   0.927
+kg_entity_coverage      0.375          0.737          0.233         0.701  3.160   0.504
+ref_domains_log         0.295          0.247          0.183         0.548  2.996   0.365
+eeat_score              0.217          0.299          0.187         0.520  2.778   0.333
+residual_ctr            0.471          0.317          0.541         0.251  2.152   0.290
+kw_density              0.356          0.526          0.343         0.502  1.533   0.183
+
+  Host-graph PageRank: 1.25 in ymyl-finance vs 0.32 in local-service
+  measured ratio 3.9x, true ratio 4.4x -- a global weight table would report neither.
+
+==============================================================================
+ [5/7]  L3 -- causal estimates, in positions
+         a weight is a description; positions per unit of work is a decision
+==============================================================================
+                          label  true_weight  fe_positions  matched_positions     lo     hi
+Dense query-document similarity        1.000        -0.928             -0.894 -0.924 -0.862
+            Host-graph PageRank        0.727        -0.544             -0.537 -0.568 -0.503
+   Content depth vs SERP median        0.841        -0.129             -0.208 -0.243 -0.172
+                   Residual CTR        0.591        -0.404             -0.353 -0.385 -0.323
+                Keyword density        0.000        -0.369             -0.342 -0.377 -0.313
+
+  Best positions per unit of effort (effort is our judgement, not a measurement):
+    Keyword density                  -0.34 positions / hours              = -0.342
+    Dense query-document similarity  -0.89 positions / weeks              = -0.298
+    Residual CTR                     -0.35 positions / days               = -0.176
+    Title-query match                -0.17 positions / hours              = -0.168
+
+  Look at what came top of that league table.
+  A factor whose true weight is exactly zero ranks first on return
+  per unit of effort -- because it is cheap to change and it is
+  correlated with something that works. Fixed effects and matching
+  both credit it: they are observational, so they inherit the
+  measurement problem whole.
+  This is the entire argument for the governance rule. L0 through L3
+  can all be fooled by a badly measured instrument. Only L4 cannot,
+  because in a split test you change the real thing rather than a
+  proxy for it -- and nothing here reaches a client until it has.
+
+==============================================================================
+ [6/7]  L4 -- intervention
+         the only rung that yields a number you can put in a contract
+==============================================================================
+  120 URLs per arm, 28+28 days
+    true -0.60   estimate -0.20   95% CI [-0.62, +0.21]   significant=False
+    underpowered by design: this arm size resolves 0.70 positions, the real effect is 0.60
+  300 URLs per arm, 28+28 days
+    true -0.60   estimate -0.47   95% CI [-0.75, -0.19]   significant=True
+    adequately powered: resolves 0.40 positions, below the real effect of 0.60
+
+  interval calibration over 400 replications: 94.5% coverage (nominal 95%)
+
+ URLs per arm  min detectable (positions)
+           30                       1.300
+           60                       1.000
+          120                       0.700
+          200                       0.500
+          300                       0.400
+
+  The first test above failed to detect a real effect, and the table
+  predicted it would. Working out the minimum detectable effect BEFORE
+  running is what separates 'the change did nothing' from 'we could
+  never have seen it'. Sizing a test off day-to-day wobble alone says
+  thirty URLs is plenty. It is not: per-URL drift between the periods
+  does not average out over days, only over URLs.
+
+==============================================================================
+ [7/7]  THE KNOWLEDGE GRAPH -- from a weight to a work order
+         a search engine ranks entities, not strings
+==============================================================================
+  query: "business bank account uk"   9 pages  ->  18 entities, 16 typed edges
+
+  what the SERP says this topic is made of (PageRank over entities):
+    0.136  Business current account         PRODUCT
+    0.089  Arranged overdraft               PRODUCT
+    0.086  Cash deposit charge              CONCEPT
+    0.070  Monthly account fee              CONCEPT
+    0.066  Current Account Switch Service   SCHEME
+    0.065  FSCS                             SCHEME
+    0.065  Banking licence                  REGULATION
+    0.065  QuickBooks                       SOFTWARE
+
+  entity linking -- one node, several surface forms:
+    Business current account         <- business account, business bank account, business current account
+    Current Account Switch Service   <- current account switch service, switch guarantee, switch service
+    Banking licence                  <- authorised uk bank, banking licence, full banking licence
+    a word graph would have scored those as unrelated strings.
+
+  typed edges, not just adjacency:
+    QuickBooks --INTEGRATES_WITH-> Xero
+    Banking licence --PROTECTED_BY-> FSCS
+    Business current account --PROTECTED_BY-> Current Account Switch Service
+
+  entity coverage, page ranked #2 : 0.84
+  entity coverage, thin page      : 0.14
+
+  the brief this generates for the thin page -- entities the SERP
+  carries and it does not:
+    Arranged overdraft                 PRODUCT
+    Cash deposit charge                CONCEPT
+    Monthly account fee                CONCEPT
+    Current Account Switch Service     SCHEME
+    FSCS                               SCHEME
+    Banking licence                    REGULATION
+    QuickBooks                         SOFTWARE
+    Xero                               SOFTWARE
+
+  client brand in this topic graph: absent from the topic graph
+  That is the expensive finding. If the brand is not an entity in
+  the topic, on-page work cannot fix it -- that is a schema.org,
+  sameAs, Wikidata and citations problem, on a different budget.
+
+  Why this sits in the same repo as the calibration harness:
+  every other factor in the list produces a number an account
+  manager reads. This one produces the same number AND the list of
+  entities a writer has to add. The weight says how hard to push;
+  the graph says where. Neither is much use without the other.
+
+==============================================================================
+ WHAT WE WOULD ACTUALLY SHIP
+==============================================================================
+     7  RECOVERED
+     1  CLEAN
+     5  MISSED
+  8/13 factors land where they should. The rest carry a
+  named, measured failure mode and ship with it attached. Nothing
+  reaches a client deck without a verdict, an interval, and a date.
+
+  runtime 90.9s   numpy 2.4.4  pandas 3.0.2  lightgbm=no (sklearn fallback)
+==============================================================================
+
+  wrote C:\Users\22300\serp-factor-lab\outputs\lab.json and dashboard/public/data/lab.json

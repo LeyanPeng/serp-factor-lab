@@ -49,18 +49,22 @@ CLUSTER_MODIFIERS: dict[str, dict[str, float]] = {
     "ymyl-finance": {
         "host_pagerank": 2.40, "ref_domains_log": 2.00, "eeat_score": 2.20,
         "content_depth_rel": 1.10, "brand_demand": 1.30, "residual_ctr": 0.70,
+        "kg_entity_coverage": 1.45,
     },
     "ecommerce": {
         "schema_coverage": 3.00, "residual_ctr": 1.30, "cwv_inp": 2.00,
         "host_pagerank": 0.90, "eeat_score": 0.70, "content_depth_rel": 0.70,
+        "kg_entity_coverage": 0.65,
     },
     "local-service": {
         "host_pagerank": 0.55, "ref_domains_log": 0.50, "brand_demand": 1.60,
         "eeat_score": 0.60, "residual_ctr": 1.40, "content_depth_rel": 0.60,
+        "kg_entity_coverage": 0.50,
     },
     "informational": {
         "semantic_sim": 1.20, "content_depth_rel": 1.30, "freshness_gap": 1.50,
         "eeat_score": 1.20, "schema_coverage": 0.50,
+        "kg_entity_coverage": 1.70,
     },
 }
 

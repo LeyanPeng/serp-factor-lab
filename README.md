@@ -31,8 +31,8 @@ and site authority to **0.73**.
 
 | pipeline | content depth | site authority | verdict | says it needs |
 |---|---|---|---|---|
-| naive — what every SEO tool ships | **0.16** | 0.64 | "clear winner" | 103 queries |
-| corrected — IPW + errors-in-variables + cluster bootstrap | **0.75** | 0.63 | "cannot separate these yet" | 18,517 queries |
+| naive — what every SEO tool ships | **0.13** | 0.57 | "clear winner" | 115 queries |
+| corrected — IPW + errors-in-variables + cluster bootstrap | **0.65** | 0.56 | "cannot separate these yet" | 36,230 queries |
 
 The naive pipeline does not merely get the sizes wrong. **It has the ranking
 backwards, and it reports a tight confidence interval while doing it.**
@@ -41,9 +41,9 @@ Confidently wrong is worse than unsure.
 Then we ran the corrected pipeline at the size it asked for:
 
 ```
-scale-up at 19,000 queries
-  content depth 0.80   site authority 0.62
-  difference 95% CI [+0.09, +0.27]   separated = True
+scale-up at 37,000 queries
+  content depth 0.76   site authority 0.59
+  difference 95% CI [+0.10, +0.24]   separated = True
 ```
 
 The power calculation predicted what it would take, and it was right. That
@@ -54,17 +54,18 @@ loop — *quote a price for certainty, pay it, get certainty* — is the product
 | factor | truth | naive | corrected | verdict |
 |---|---|---|---|---|
 | Dense query-doc similarity | 1.00 | 1.00 | 1.00 | RECOVERED |
-| Content depth vs SERP median | 0.84 | 0.16 | 0.75 | RECOVERED |
-| Host-graph PageRank | 0.73 | 0.64 | 0.63 | MISSED |
-| Residual CTR | 0.59 | 0.20 | 0.24 | MISSED |
-| Referring root domains | 0.41 | 0.35 | 0.35 | RECOVERED |
-| E-E-A-T rubric | 0.34 | 0.30 | 0.30 | RECOVERED |
-| **Keyword density** | **0.00** | **0.34** | **0.01** | FALSE POSITIVE → CLEAN |
+| Content depth vs SERP median | 0.84 | 0.13 | 0.65 | RECOVERED |
+| Host-graph PageRank | 0.73 | 0.57 | 0.56 | MISSED |
+| **KG entity coverage** | 0.66 | 0.50 | 0.50 | MISSED |
+| Residual CTR | 0.59 | 0.16 | 0.45 | MISSED |
+| Referring root domains | 0.41 | 0.34 | 0.33 | MISSED |
+| E-E-A-T rubric | 0.34 | 0.28 | 0.28 | RECOVERED |
+| **Keyword density** | **0.00** | **0.33** | **0.04** | FALSE POSITIVE → CLEAN |
 
-Two failures are worth more than the eight successes:
+Two failures are worth more than the eight that landed:
 
 **The invented factor.** Keyword density has a true weight of exactly zero.
-Uncorrected, the model gives it 0.34 and gives real content depth 0.16 — it
+Uncorrected, the model gives it 0.33 and gives real content depth 0.13 — it
 would tell a client that keyword density matters twice as much as content.
 The cause is not collinearity, it is *measurement*: depth is hard to extract
 cleanly, the decoy is trivial to extract, and a regression credits whichever
@@ -73,7 +74,7 @@ outcome. The fix is a re-measurement audit — hand-extract 300 pages, compare
 against the crawler, feed the reliability into an errors-in-variables
 correction. One afternoon of work, and the highest-return item in the project.
 
-**The vanished factor.** The click signal reads 0.20 against a truth of 0.59.
+**The vanished factor.** The click signal reads 0.16 against a truth of 0.59.
 The usual construction — observed CTR minus the average CTR at that position —
 looks like it removes position bias and does the opposite: position is *caused
 by* quality, so subtracting the positional mean subtracts the quality too.
@@ -112,6 +113,51 @@ This is the entire argument for the governance rule: **L0 through L3 can all
 be fooled by a badly measured instrument. Only L4 cannot**, because in a split
 test you change the real thing rather than a proxy for it.
 
+### 5. The knowledge graph — from a weight to a work order
+
+A search engine ranks entities, not strings. `knowledge_graph.py` builds the
+topic's entity graph out of the pages Google itself chose, and runs PageRank
+over it — the same power iteration as the host graph, pointed at entities.
+
+```
+query: "business bank account uk"   9 pages -> 18 entities, 16 typed edges
+
+entity linking -- one node, several surface forms:
+  Banking licence  <- "banking licence", "full banking licence",
+                      "authorised uk bank"
+
+typed edges, not just adjacency:
+  Banking licence --PROTECTED_BY-> FSCS
+
+entity coverage, page ranked #2 : 0.84
+entity coverage, thin page      : 0.14
+
+brief generated for the thin page:
+  Arranged overdraft, Cash deposit charge, Monthly account fee,
+  Current Account Switch Service, FSCS, Banking licence, QuickBooks, Xero
+
+client brand in this topic graph: absent
+```
+
+That is what makes it a knowledge graph rather than a word graph: **linking**
+(three surface forms collapse to one node), **typing** (nodes carry ORG /
+SCHEME / REGULATION / SOFTWARE), and **typed relations** rather than "these
+words appeared near each other".
+
+It is also a modelled factor — `kg_entity_coverage`, true weight 0.66 — and it
+swings **3.2x** between clusters (0.74 informational, 0.23 local service).
+
+**The weight says how hard to push; the graph says where.** Every other factor
+produces a number an account manager reads. This one produces that number *and*
+the list of entities a writer has to add. And when the client brand is absent
+from the graph entirely, on-page work cannot fix it — that is a schema.org,
+`sameAs`, Wikidata and citations problem, on a different budget.
+
+In production: Cloud Natural Language `analyzeEntities` returns Google's own
+entities plus a `salience` score (~$1/1k pages, free monthly tier), reconciled
+to Wikidata — which is Google's own recommendation when you need a graph of
+connected entities rather than single lookups.
+
 ---
 
 ## Technology
@@ -126,6 +172,7 @@ test you change the real thing rather than a proxy for it.
 | Causal inference | within-query **fixed effects**, near-twin matching, **difference-in-differences** across updates, DiD split tests with measured coverage | `causal.py` |
 | Clustering | SERP-shape fingerprint → KMeans, scored by adjusted Rand index | `cluster.py` |
 | Graph | host-graph **PageRank** by sparse power iteration | design in `config.py`, `collect.py` |
+| Knowledge graph | entity linking across surface forms, typed relation extraction, **PageRank over the entity graph**, coverage and gap scoring | `knowledge_graph.py` |
 | NLP | bi-encoder similarity, passage-level max similarity, LLM-as-judge against the Quality Rater Guidelines with Krippendorff α | `config.py`, `collect.py` |
 | Data engineering | `asyncio` + `httpx` concurrency, `selectolax` parsing, Parquet, GSC → BigQuery | `collect.py` |
 | Frontend | **Next.js 16 App Router, TypeScript, Tailwind 4**, hand-drawn SVG error bars | `dashboard/` |
@@ -145,7 +192,7 @@ setup, because a demo that needs a working afternoon to install is not a demo.
 
 ## Factors
 
-34 factors in 6 groups, sorted by **evidence tier** rather than by folklore:
+35 factors in 6 groups, sorted by **evidence tier** rather than by folklore:
 
 - **Tier A (20) — confirmed by Google.** Core Web Vitals (INP replaced FID in
   March 2024), HTTPS, mobile usability, spam policies, the helpful-content
@@ -249,14 +296,16 @@ argument for doing it.
 
 ```
 python/
-  config.py       34-factor registry — the single source of truth
+  config.py       35-factor registry — the single source of truth
   simulate.py     the synthetic Google, whose weights we know
   model.py        two heads, IRLS solver, IPW, ranking metrics
   validate.py     bootstrap, noise floor, verdicts, power, separation test
   causal.py       fixed effects, matching, DiD, split tests, MDE curve
   cluster.py      SERP-shape fingerprint and per-cluster weights
+  knowledge_graph.py  entity graph from the SERP: salience, coverage, briefs
   collect.py      the real data path — off by default, it costs money
   run_demo.py     one command, end to end
+  sync_writeup.py keeps docs/index.html numbers tied to lab.json
 dashboard/        Next.js app, reads the JSON run_demo.py writes
 outputs/lab.json  every number on the dashboard
 ```

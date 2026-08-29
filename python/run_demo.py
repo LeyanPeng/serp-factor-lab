@@ -22,6 +22,7 @@ import pandas as pd
 import causal
 import cluster as clu
 import config
+import knowledge_graph as kg
 import model
 import simulate
 import validate
@@ -59,7 +60,7 @@ def main() -> None:
     ap.add_argument("--seed", type=int, default=7)
     ap.add_argument("--queries", type=int, default=1200,
                     help="pilot panel size, one vertical's worth of budget")
-    ap.add_argument("--scale-queries", type=int, default=24000,
+    ap.add_argument("--scale-queries", type=int, default=48000,
                     help="upper bound on the scale-up panel")
     ap.add_argument("--quick", action="store_true")
     args = ap.parse_args()
@@ -83,7 +84,7 @@ def main() -> None:
     reliability = {"content_depth_rel": panel.meta["depth_reliability"]}
 
     # =====================================================================
-    head(1, 6, "CALIBRATION -- does the estimator recover weights we set?",
+    head(1, 7, "CALIBRATION -- does the estimator recover weights we set?",
          "the only honest way to put an error bar on a number nobody can verify")
 
     naive = validate.bootstrap_weights(
@@ -145,7 +146,7 @@ def main() -> None:
     )
 
     # =====================================================================
-    head(2, 6, "THE 0.84 vs 0.73 QUESTION",
+    head(2, 7, "THE 0.84 vs 0.73 QUESTION",
          "in this harness those two numbers are the ground truth, by construction")
 
     a, b = "content_depth_rel", "host_pagerank"
@@ -191,7 +192,16 @@ def main() -> None:
               f"{config.label_of(b)} {st_big.est_b:.2f}")
         print(f"    difference 95% CI [{st_big.diff_lo:+.2f}, {st_big.diff_hi:+.2f}]"
               f"   separated = {st_big.separated}")
-        if st_big.separated:
+        if st_big.separated and capped:
+            # Separating below the demanded panel is NOT the prediction being
+            # confirmed. It means the requirement was conservative, and saying
+            # otherwise would be exactly the overclaiming this repo exists to
+            # argue against.
+            print(f"    the power calculation asked for ~{need:,} queries. This ran "
+                  f"at {n_big:,}, short of that, and the difference cleared zero")
+            print(f"    anyway -- so the requirement was conservative, not confirmed. "
+                  f"Raise --scale-queries to {need:,} to test it properly.")
+        elif st_big.separated:
             print(f"    the power calculation asked for ~{need:,} queries to make "
                   f"this call. At {n_big:,} the call is made -- the prediction held.")
         else:
@@ -216,7 +226,7 @@ def main() -> None:
                                 pilot=sep_rows, scale=scale)
 
     # =====================================================================
-    head(3, 6, "L1 -- does it rank like Google?",
+    head(3, 7, "L1 -- does it rank like Google?",
          "held out by query, never by row; compared against baselines that are honest")
 
     train, test = validate.group_split(panel.df, frac=0.7, seed=args.seed)
@@ -229,7 +239,7 @@ def main() -> None:
                            linear_ok=bool(ok), message=msg)
 
     # =====================================================================
-    head(4, 6, "L2 -- does it travel?",
+    head(4, 7, "L2 -- does it travel?",
          "clusters discovered from SERP shape, never assumed")
 
     cpanel = simulate.simulate(n_queries=max(4000, args.queries), seed=args.seed + 1)
@@ -262,7 +272,7 @@ def main() -> None:
         clusters=list(piv.columns))
 
     # =====================================================================
-    head(5, 6, "L3 -- causal estimates, in positions",
+    head(5, 7, "L3 -- causal estimates, in positions",
          "a weight is a description; positions per unit of work is a decision")
 
     cz = model.standardize(cdf, feats)
@@ -315,7 +325,7 @@ def main() -> None:
                                          "other number on this page is measured."))
 
     # =====================================================================
-    head(6, 6, "L4 -- intervention",
+    head(6, 7, "L4 -- intervention",
          "the only rung that yields a number you can put in a contract")
 
     cov = causal.coverage_check(reps=400, seed=args.seed)
@@ -357,6 +367,20 @@ def main() -> None:
                    significant=r.significant, n_per_arm=r.n_per_arm,
                    days=r.days, mde=mde_at.get(r.n_per_arm)) for r in runs],
         coverage=cov, mde=mde.to_dict("records"))
+
+    # =====================================================================
+    head(7, 7, "THE KNOWLEDGE GRAPH -- from a weight to a work order",
+         "a search engine ranks entities, not strings")
+
+    kg_out = kg.print_demo()
+    export["knowledge_graph"] = kg_out
+
+    print()
+    print("  Why this sits in the same repo as the calibration harness:")
+    print("  every other factor in the list produces a number an account")
+    print("  manager reads. This one produces the same number AND the list of")
+    print("  entities a writer has to add. The weight says how hard to push;")
+    print("  the graph says where. Neither is much use without the other.")
 
     # =====================================================================
     print()

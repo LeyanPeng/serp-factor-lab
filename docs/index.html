@@ -291,11 +291,67 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--stamp);
       <div><dt>Instrument</dt><dd>pairwise LTR + IPW + EIV</dd></div>
       <div><dt>Reference</dt><dd>synthetic ranker, known weights</dd></div>
       <div><dt>Pilot panel</dt><dd>1,200 queries</dd></div>
-      <div><dt>Scale panel</dt><dd>19,000 queries</dd></div>
+      <div><dt>Scale panel</dt><dd>37,000 queries</dd></div>
       <div><dt>Resamples</dt><dd>300 (by query)</dd></div>
       <div><dt>Seed</dt><dd>7 &nbsp;·&nbsp; 123 &nbsp;·&nbsp; 999</dd></div>
     </dl>
   </header>
+
+  <!-- route -->
+  <section class="clause">
+    <div class="no">ROUTE</div>
+    <div class="body">
+      <h2>How it was built, and how it would run on your clients</h2>
+      <p class="lede">
+        Three stages. The first two are finished and in the repository &mdash;
+        you can run them. The third is the four&#8209;week pilot this document
+        is asking for.
+      </p>
+      <table>
+        <thead><tr><th>Stage</th><th>What happens</th><th>Built with</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>1. Build a reference</strong><br>
+              <span class="label">done</span></td>
+            <td>A search engine whose weights I set: four query clusters with
+              different weight vectors, position bias, a NavBoost&#8209;style
+              re&#8209;ranking stage, most of the score coming from signals the
+              model cannot see, one factor measured badly and a worthless decoy
+              measured cleanly.</td>
+            <td class="num">numpy &middot; scipy &middot; pandas</td>
+          </tr>
+          <tr>
+            <td><strong>2. Calibrate the instrument</strong><br>
+              <span class="label">done</span></td>
+            <td>Run the full estimation pipeline at it and mark its own work:
+              pairwise learning&#8209;to&#8209;rank, position&#8209;bias
+              weighting, an errors&#8209;in&#8209;variables correction,
+              intervals bootstrapped over whole SERPs, a permutation noise
+              floor, then fixed effects, matching and simulated split tests.
+              Every factor gets a verdict against a truth it cannot see.</td>
+            <td class="num">scikit&#8209;learn &middot; statsmodels &middot;
+              LightGBM <span style="color:var(--ink-3)">(optional)</span></td>
+          </tr>
+          <tr>
+            <td><strong>3. Point it at Google</strong><br>
+              <span class="label" style="color:var(--stamp)">the pilot</span></td>
+            <td>Identical estimator, real SERPs. Daily panel pull, weekly refit,
+              a drift alarm when a weight leaves its own interval, entity graphs
+              per query, and split tests on client sites for anything that
+              survives. &sect;&nbsp;3 is the whole loop.</td>
+            <td class="num">DataForSEO &middot; CrUX &middot; GSC&rarr;BigQuery
+              &middot; Cloud NL + Wikidata &middot; Next.js</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="margin-top:18px">
+        The one thing worth saying twice: <strong>stage 2 is not a rehearsal for
+        stage 3, it is the error bar on stage 3.</strong> The same code runs in
+        both. What the harness measures is how wrong that code is, and that
+        number is the only honest thing to attach to a live estimate.
+      </p>
+    </div>
+  </section>
 
   <!-- ══════════════════════════ § 1 results ══════════════════════════ -->
   <section class="clause">
@@ -313,18 +369,18 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--stamp);
           <div class="label" style="margin-bottom:16px">Uncorrected &mdash; the standard build</div>
           <div class="vrow">
             <span>Content depth <span class="num" style="color:var(--ink-3)">truth 0.84</span></span>
-            <span class="vbig fail">0.16</span>
+            <span class="vbig fail">0.13</span>
           </div>
           <div class="vrow">
             <span>Site authority <span class="num" style="color:var(--ink-3)">truth 0.73</span></span>
-            <span class="vbig">0.64</span>
+            <span class="vbig">0.57</span>
           </div>
           <div class="vrow">
             <span>Keyword density <span class="num" style="color:var(--ink-3)">truth 0.00</span></span>
-            <span class="vbig fail">0.34</span>
+            <span class="vbig fail">0.33</span>
           </div>
           <p style="margin:16px 0 0; font-size:14px; color:var(--ink-2)">
-            It reports a clear winner and claims 103 queries were enough. It has
+            It reports a clear winner and claims 115 queries were enough. It has
             the ranking backwards, and it says so with a tight interval.
             <strong style="color:var(--ink)">Confidently wrong is worse than
             unsure.</strong>
@@ -334,20 +390,20 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--stamp);
           <div class="label" style="margin-bottom:16px">After three corrections</div>
           <div class="vrow">
             <span>Content depth <span class="num" style="color:var(--ink-3)">truth 0.84</span></span>
-            <span class="vbig pass">0.75</span>
+            <span class="vbig pass">0.65</span>
           </div>
           <div class="vrow">
             <span>Site authority <span class="num" style="color:var(--ink-3)">truth 0.73</span></span>
-            <span class="vbig">0.63</span>
+            <span class="vbig">0.56</span>
           </div>
           <div class="vrow">
             <span>Keyword density <span class="num" style="color:var(--ink-3)">truth 0.00</span></span>
-            <span class="vbig pass">0.01</span>
+            <span class="vbig pass">0.04</span>
           </div>
           <p style="margin:16px 0 0; font-size:14px; color:var(--ink-2)">
             It <strong style="color:var(--ink)">refuses to call it</strong> at
             1,200 queries and quotes the panel that would settle it:
-            <span class="num">~18,500</span>. Position&#8209;bias weighting,
+            <span class="num">~36,000</span>. Position&#8209;bias weighting,
             errors&#8209;in&#8209;variables, and bootstrapping whole SERPs
             instead of rows.
           </p>
@@ -355,10 +411,10 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--stamp);
       </div>
 
       <div class="call">
-        <p><strong>Then we ran it at 19,000 queries, the size it asked for.</strong>
-        Content depth <span class="num">0.80</span>, site authority
-        <span class="num">0.62</span>, difference 95% interval
-        <span class="num">[+0.09, +0.27]</span> &mdash; separated. The power
+        <p><strong>Then we ran it at 37,000 queries, the size it asked for.</strong>
+        Content depth <span class="num">0.76</span>, site authority
+        <span class="num">0.59</span>, difference 95% interval
+        <span class="num">[+0.10, +0.24]</span> &mdash; separated. The power
         calculation quoted a price for certainty, we paid it, and we got
         certainty. That loop is the product.</p>
       </div>
@@ -369,8 +425,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--stamp);
         two rows a very long way and leaves the rest almost where they were
         &mdash; which is the point: you cannot tell which two without a harness.
       </p>
-      <div class="wrap"><svg id="dev" viewBox="0 0 740 392" role="img"
-        aria-label="Deviation from true weight for twelve factors, uncorrected versus corrected"></svg></div>
+      <div class="wrap"><svg id="dev" viewBox="0 0 740 420" role="img"
+        aria-label="Deviation from true weight for thirteen factors, uncorrected versus corrected"></svg></div>
       <div class="legend">
         <span><i class="dot" style="background:var(--fail)"></i>uncorrected</span>
         <span><i class="dot" style="background:var(--pass)"></i>corrected</span>
@@ -380,7 +436,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--stamp);
       <h3>Two failures worth more than the eight successes</h3>
       <p>
         <strong>The invented factor.</strong> Keyword density has a true weight
-        of exactly zero and gets 0.34. The cause is not collinearity, it is
+        of exactly zero and gets 0.33. The cause is not collinearity, it is
         <em>measurement</em>: content depth is hard to extract cleanly
         (boilerplate, navigation, pagination) and the decoy is trivial to
         extract. A regression credits whichever variable carries the cleanest
@@ -390,14 +446,14 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--stamp);
         afternoon, and the highest&#8209;return item in the whole project.
       </p>
       <p>
-        <strong>The vanished factor.</strong> The click signal reads 0.20
+        <strong>The vanished factor.</strong> The click signal reads 0.16
         against a truth of 0.59. The usual construction &mdash; observed CTR
         minus average CTR at that position &mdash; looks like it removes
         position bias and does the opposite: position is <em>caused by</em>
         quality, so subtracting the positional mean subtracts the quality with
         it. Dividing by an examination probability estimated from a randomised
         slice recovers most of it (the exponent comes back at
-        <span class="num">1.08</span> against a true <span class="num">1.00</span>).
+        <span class="num">0.99</span> against a true <span class="num">1.00</span>).
         The residual gap is irreducible click noise. We ship the factor with the
         gap attached.
       </p>
@@ -488,8 +544,237 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--stamp);
   </section>
 
   <!-- ══════════════════════════ § 3 factors ══════════════════════════ -->
+
+  <!-- 3 -- the bridge to live data -->
   <section class="clause">
     <div class="no">&sect;&nbsp;3</div>
+    <div class="body">
+      <h2>Pointing it at the real Google</h2>
+      <p class="lede">
+        Everything above happens in a world I control. The obvious objection is
+        that none of it touches Google, so here is exactly what transfers,
+        what has to be bought, and what runs every week once it is live.
+      </p>
+
+      <h3>What changes, and what does not</h3>
+      <table>
+        <thead><tr><th></th><th>In the harness</th><th>On live SERPs</th></tr></thead>
+        <tbody>
+          <tr><td>Rows</td><td>simulated SERPs</td>
+              <td>DataForSEO top&#8209;20, ~5,000 queries &times; 3 verticals,
+                  three pulls a week</td></tr>
+          <tr><td>True weights</td><td class="num">known</td>
+              <td class="num" style="color:var(--fail)">never known &mdash; that is the point</td></tr>
+          <tr><td>Estimator</td><td colspan="2" style="text-align:center">
+              <strong>identical code, not a port</strong></td></tr>
+          <tr><td>Error bar</td><td>measured against truth</td>
+              <td><strong>carried over from the harness</strong></td></tr>
+          <tr><td>Verdicts</td><td>checked</td>
+              <td>inherited, then re&#8209;earned at L4</td></tr>
+        </tbody>
+      </table>
+      <p>
+        A live estimate arrives as <em>0.65, and this estimator was off by
+        0.19 on a factor of this kind when the answer was checkable</em>. That
+        second clause is the whole contribution. No competitor ships it because
+        no competitor has anywhere to measure it.
+      </p>
+
+      <h3>The one thing that looked impossible</h3>
+      <p>
+        Position bias is corrected here using a 5% slice of SERPs shown in
+        random order &mdash; the exponent comes back at
+        <span class="num">0.99</span> against a true
+        <span class="num">1.00</span>. You cannot randomise Google, so on paper
+        that correction does not survive contact with reality.
+      </p>
+      <div class="call">
+        <p><strong>It does, because Google randomises for you.</strong> The same
+        URL sits at position 4 one week and position 9 the next, for the same
+        query, hundreds of times a month across a panel. Comparing that URL's
+        click&#8209;through rate against itself at two different positions
+        identifies the examination curve without anyone intervening &mdash;
+        intervention harvesting rather than intervention. For client sites the
+        raw material is already sitting in Search Console: same page, same
+        query, different average position, week by week.</p>
+      </div>
+
+      <h3>What actually runs, and when</h3>
+      <table>
+        <thead><tr><th>Cadence</th><th>Job</th><th>Why that often</th></tr></thead>
+        <tbody>
+          <tr><td class="num">daily</td><td>SERP pull for the panel; Search
+            Console rows for every client property</td>
+            <td>rank movement is the raw signal, and it is cheap</td></tr>
+          <tr><td class="num">weekly</td><td>refit; compare the new weight
+            vector against last week's intervals; raise a drift alarm</td>
+            <td><strong>a weight leaving its own interval is an algorithm
+              update, dated</strong> &mdash; the model becomes an early warning
+              system rather than a thing that goes stale</td></tr>
+          <tr><td class="num">monthly</td><td>re&#8209;crawl, rebuild entity
+            graphs, re&#8209;estimate position bias, sample pages for rubric
+            scoring</td><td>content and SERP composition move on this scale</td></tr>
+          <tr><td class="num">quarterly</td><td>rebuild the host graph;
+            re&#8209;measurement audit on 300 hand&#8209;extracted pages;
+            review the factor list itself</td>
+            <td>the audit is what keeps the errors&#8209;in&#8209;variables
+              correction honest, and it is one afternoon</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Agile, concretely</h3>
+      <p>
+        &ldquo;Adjusts quickly&rdquo; usually means nothing. Here it means one
+        specific thing: <strong>every factor carries a live interval, and the
+        weekly refit either keeps it inside that interval or does not.</strong>
+        Inside, nothing happens. Outside, that factor is flagged with a date,
+        and the date is the first evidence of a core update &mdash; typically
+        before it is announced, because the panel is watching a stable set of
+        queries rather than a client's own traffic.
+      </p>
+      <p>
+        Nothing about that alarm reaches a client on its own. It opens a
+        question; a split test closes it. The governance rule in &sect;&nbsp;6
+        is not decoration &mdash; it is what stops a drift alarm from becoming
+        an invoice.
+      </p>
+    </div>
+  </section>
+
+  <!-- 4 -- knowledge graph -->
+  <section class="clause">
+    <div class="no">&sect;&nbsp;4</div>
+    <div class="body">
+      <h2>The knowledge graph</h2>
+      <p class="lede">
+        A search engine does not rank strings, it ranks entities and the
+        relations between them. A model built only from term&#8209;overlap
+        features is describing the wrong object, and no amount of statistical
+        correction repairs a feature that measures the wrong thing.
+      </p>
+      <p>
+        We cannot see Google's weights. We <em>can</em> see two things Google
+        will hand over: its <strong>answer</strong> &mdash; the ten pages it
+        picked &mdash; and its <strong>reading</strong> of any page, because
+        Cloud Natural Language's <span class="num">analyzeEntities</span>
+        returns the entities Google's own extractor finds along with a
+        <span class="num">salience</span> score for each. Pool the first, run it
+        through the second, and the topic's entity graph is Google's, not ours.
+      </p>
+
+      <h3>Why this is a knowledge graph and not a word graph</h3>
+      <p>
+        Three properties, and <span class="num">knowledge_graph.py</span> prints
+        evidence of all three on a real nine&#8209;page SERP:
+      </p>
+      <table>
+        <thead><tr><th>Property</th><th>What the run shows</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Linking</strong></td>
+            <td>&ldquo;banking licence&rdquo;, &ldquo;full banking
+              licence&rdquo; and &ldquo;authorised UK bank&rdquo; collapse into
+              <em>one</em> node. Surface form is not identity. A co&#8209;occurrence
+              graph over words scores those as three unrelated strings.</td></tr>
+          <tr><td><strong>Typing</strong></td>
+            <td>nodes carry a type &mdash; SCHEME, REGULATION, SOFTWARE, GOV
+              &mdash; so &ldquo;which regulator governs this topic&rdquo; is a
+              query you can run, not a thing you eyeball.</td></tr>
+          <tr><td><strong>Relations</strong></td>
+            <td>edges are typed: <span class="num">Banking licence
+              &mdash;PROTECTED_BY&rarr; FSCS</span>, not &ldquo;these two
+              appeared near each other&rdquo;.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>What comes out</h3>
+      <div class="verdicts">
+        <div>
+          <div class="label" style="margin-bottom:16px">A number, for the model</div>
+          <div class="vrow">
+            <span>Entity coverage, page ranked #2</span>
+            <span class="vbig pass">0.84</span>
+          </div>
+          <div class="vrow">
+            <span>Entity coverage, thin page</span>
+            <span class="vbig fail">0.14</span>
+          </div>
+          <p style="margin:16px 0 0; font-size:14px; color:var(--ink-2)">
+            Share of the topic's salience mass a page carries. It enters the
+            model as <span class="num">kg_entity_coverage</span>, true weight
+            <span class="num">0.66</span> &mdash; and it swings
+            <span class="num">3.2&times;</span> between clusters
+            (<span class="num">0.74</span> informational,
+            <span class="num">0.23</span> local service). A global table would
+            report neither.
+          </p>
+        </div>
+        <div>
+          <div class="label" style="margin-bottom:16px">A work order, for a writer</div>
+          <p style="margin:0 0 10px; font-size:14px; color:var(--ink-2)">
+            The same graph names what the thin page is missing, ordered by how
+            much the SERP cares:
+          </p>
+          <p class="num" style="font-size:13px; line-height:1.8">
+            Arranged overdraft &middot; Cash deposit charge &middot; Monthly
+            account fee &middot; Current Account Switch Service &middot; FSCS
+            &middot; Banking licence &middot; QuickBooks &middot; Xero
+          </p>
+          <p style="margin:12px 0 0; font-size:14px; color:var(--ink-2)">
+            That is a content brief, derived from Google's own ten choices
+            rather than from an opinion in a meeting.
+          </p>
+        </div>
+      </div>
+
+      <div class="call">
+        <p><strong>And the finding nobody wants but everybody needs.</strong>
+        The client brand in that run is <em>absent from the topic graph
+        entirely</em>. When that happens, on&#8209;page work cannot fix it: no
+        amount of rewriting moves a brand Google has not yet accepted as an
+        entity in the topic. That is a schema.org, <span class="num">sameAs</span>,
+        Wikidata and citations problem, on a different budget and a longer
+        timeline &mdash; and it is far cheaper to say so in month one than in
+        month nine.</p>
+      </div>
+
+      <h3>Where the real data comes from</h3>
+      <table>
+        <thead><tr><th>Step</th><th>Production source</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td>extract + link</td>
+            <td>Cloud Natural Language <span class="num">analyzeEntities</span>,
+              reconciled to Wikidata QIDs</td>
+            <td>salience arrives in the same response; ~$1 per 1,000 pages with
+              a free monthly tier</td></tr>
+          <tr><td>the graph itself</td><td>Wikidata dumps</td>
+            <td>Google's own guidance: the Knowledge Graph Search API returns
+              single entities, not graphs of connected ones, and is being
+              migrated to Cloud Enterprise Knowledge Graph</td></tr>
+          <tr><td>relations</td><td>dependency patterns, plus schema.org and
+              <span class="num">sameAs</span> already in the page markup</td>
+            <td>the markup half is free and mostly unread</td></tr>
+          <tr><td>brand as entity</td><td>Knowledge Panel presence, Wikidata
+              membership</td><td>the observable end of whether Google has
+              accepted the brand at all</td></tr>
+        </tbody>
+      </table>
+      <p>
+        The demo in the repo uses a closed gazetteer so it runs with no key and
+        no network. Swapping in <span class="num">analyzeEntities</span> is a
+        function call, not a redesign.
+      </p>
+      <p>
+        <strong>Why it sits beside the calibration harness.</strong> Every other
+        factor produces a number an account manager reads. This one produces
+        that number <em>and</em> the list of entities a writer has to add. The
+        weight says how hard to push; the graph says where. Neither is much use
+        without the other.
+      </p>
+    </div>
+  </section>
+
+  <section class="clause">
+    <div class="no">&sect;&nbsp;5</div>
     <div class="body">
       <h2>Factors</h2>
       <p class="lede">
@@ -548,7 +833,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--stamp);
 
   <!-- ══════════════════════════ § 4 method ══════════════════════════ -->
   <section class="clause">
-    <div class="no">&sect;&nbsp;4</div>
+    <div class="no">&sect;&nbsp;6</div>
     <div class="body">
       <h2>Method</h2>
 
@@ -659,7 +944,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--stamp);
 
   <!-- ══════════════════════════ closing ══════════════════════════ -->
   <section class="clause">
-    <div class="no">&sect;&nbsp;5</div>
+    <div class="no">&sect;&nbsp;7</div>
     <div class="body">
       <h2>What is real and what is not</h2>
       <p>Being explicit, because the distinction is the whole point.</p>
@@ -707,20 +992,23 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--stamp);
 <script>
 /* Deviation chart: estimate minus known truth, one row per factor.
    Values come straight from outputs/lab.json. */
+/* SYNC:rows BEGIN -- generated by python/sync_writeup.py */
 const rows = [
   ["Dense query-doc similarity",  1.000, 1.000, 1.000],
-  ["Content depth vs SERP median",0.841, 0.163, 0.748],
-  ["Host-graph PageRank",         0.727, 0.635, 0.629],
-  ["Residual CTR",                0.591, 0.202, 0.235],
-  ["Referring root domains",      0.409, 0.352, 0.354],
-  ["E-E-A-T rubric score",        0.341, 0.301, 0.297],
-  ["Title-query match",           0.250, 0.134, 0.132],
-  ["Branded search demand",       0.182, 0.209, 0.204],
-  ["Date honesty gap",            0.114, 0.146, 0.139],
-  ["Structured data coverage",    0.055, 0.036, 0.037],
-  ["INP (field)",                 0.036, 0.067, 0.060],
-  ["Keyword density  (truth 0)",  0.000, 0.338, 0.013],
+  ["Content depth vs SERP median",0.841, 0.131, 0.654],
+  ["Host-graph PageRank",         0.727, 0.574, 0.564],
+  ["KG entity coverage",          0.659, 0.498, 0.498],
+  ["Residual CTR",                0.591, 0.161, 0.447],
+  ["Referring root domains",      0.409, 0.337, 0.334],
+  ["E-E-A-T rubric score",        0.341, 0.283, 0.283],
+  ["Title-query match",           0.250, 0.137, 0.137],
+  ["Branded search demand",       0.182, 0.149, 0.148],
+  ["Date honesty gap",            0.114, 0.085, 0.084],
+  ["Structured data coverage",    0.055, 0.049, 0.058],
+  ["INP (field)",                 0.036, 0.052, 0.050],
+  ["Keyword density  (truth 0)",  0.000, 0.334, 0.039],
 ];
+/* SYNC:rows END */
 
 const svg = document.getElementById("dev");
 const NS = "http://www.w3.org/2000/svg";
