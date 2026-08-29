@@ -331,5 +331,11 @@ Being explicit, because the distinction is the whole point:
   delivery data.
 
 Conclusions hold across seeds. `--seed 7`, `--seed 123` and `--seed 999` all
-produce a naive pipeline that invents the decoy at 0.33–0.41 and loses the
-real factor, and a corrected pipeline that recovers it.
+produce a naive pipeline that invents the decoy at 0.33–0.42 while pushing the
+real factor down to 0.13–0.16 — the ranking inverted every time — and a
+corrected pipeline that pulls the real factor back to 0.65–0.86.
+
+Per-factor *verdicts* are not identical across seeds, and the table does not
+claim they are: the decoy lands on CLEAN at seeds 7 and 999 and on FALSE
+POSITIVE at 123. That is the harness being honest about its own resolution,
+which is the same thing it is asking of everyone else.
