@@ -12,7 +12,7 @@
         "corrected": 1.0,
         "lo": 1.0,
         "hi": 1.0,
-        "noise_floor": 0.018669,
+        "noise_floor": 0.02032,
         "verdict": "RECOVERED",
         "why": "95% interval covers the truth"
       },
@@ -20,14 +20,14 @@
         "factor": "title_match",
         "label": "Title-query match",
         "true": 0.25,
-        "naive": 0.133945,
-        "naive_lo": 0.083372,
-        "naive_hi": 0.186858,
+        "naive": 0.171676,
+        "naive_lo": 0.111813,
+        "naive_hi": 0.221037,
         "naive_verdict": "MISSED",
-        "corrected": 0.131899,
-        "lo": 0.082259,
-        "hi": 0.184137,
-        "noise_floor": 0.019444,
+        "corrected": 0.166125,
+        "lo": 0.108874,
+        "hi": 0.214703,
+        "noise_floor": 0.01896,
         "verdict": "MISSED",
         "why": "understated -- interval sits entirely below the truth"
       },
@@ -35,14 +35,14 @@
         "factor": "host_pagerank",
         "label": "Host-graph PageRank",
         "true": 0.727273,
-        "naive": 0.635357,
-        "naive_lo": 0.567803,
-        "naive_hi": 0.696058,
+        "naive": 0.646178,
+        "naive_lo": 0.580307,
+        "naive_hi": 0.714691,
         "naive_verdict": "MISSED",
-        "corrected": 0.628729,
-        "lo": 0.561923,
-        "hi": 0.689011,
-        "noise_floor": 0.018152,
+        "corrected": 0.653004,
+        "lo": 0.591521,
+        "hi": 0.722407,
+        "noise_floor": 0.019162,
         "verdict": "MISSED",
         "why": "understated -- interval sits entirely below the truth"
       },
@@ -50,14 +50,14 @@
         "factor": "ref_domains_log",
         "label": "Referring root domains (log)",
         "true": 0.409091,
-        "naive": 0.351856,
-        "naive_lo": 0.297857,
-        "naive_hi": 0.411839,
+        "naive": 0.354126,
+        "naive_lo": 0.295348,
+        "naive_hi": 0.417499,
         "naive_verdict": "RECOVERED",
-        "corrected": 0.353712,
-        "lo": 0.300032,
-        "hi": 0.412265,
-        "noise_floor": 0.018003,
+        "corrected": 0.353486,
+        "lo": 0.296019,
+        "hi": 0.416528,
+        "noise_floor": 0.019645,
         "verdict": "RECOVERED",
         "why": "95% interval covers the truth"
       },
@@ -65,29 +65,29 @@
         "factor": "brand_demand",
         "label": "Branded search demand",
         "true": 0.181818,
-        "naive": 0.208563,
-        "naive_lo": 0.146918,
-        "naive_hi": 0.271015,
-        "naive_verdict": "RECOVERED",
-        "corrected": 0.203712,
-        "lo": 0.143682,
-        "hi": 0.265141,
-        "noise_floor": 0.018449,
-        "verdict": "RECOVERED",
-        "why": "95% interval covers the truth"
+        "naive": 0.104764,
+        "naive_lo": 0.043952,
+        "naive_hi": 0.159193,
+        "naive_verdict": "MISSED",
+        "corrected": 0.108722,
+        "lo": 0.050254,
+        "hi": 0.160485,
+        "noise_floor": 0.018001,
+        "verdict": "MISSED",
+        "why": "understated -- interval sits entirely below the truth"
       },
       {
         "factor": "content_depth_rel",
         "label": "Content depth vs SERP median",
         "true": 0.840909,
-        "naive": 0.16278,
-        "naive_lo": 0.092245,
-        "naive_hi": 0.231287,
+        "naive": 0.127882,
+        "naive_lo": 0.060117,
+        "naive_hi": 0.197555,
         "naive_verdict": "MISSED",
-        "corrected": 0.747987,
-        "lo": 0.422692,
-        "hi": 1.058409,
-        "noise_floor": 0.023431,
+        "corrected": 0.649402,
+        "lo": 0.309822,
+        "hi": 0.998997,
+        "noise_floor": 0.019842,
         "verdict": "RECOVERED",
         "why": "95% interval covers the truth"
       },
@@ -95,14 +95,14 @@
         "factor": "eeat_score",
         "label": "E-E-A-T rubric score",
         "true": 0.340909,
-        "naive": 0.301079,
-        "naive_lo": 0.237681,
-        "naive_hi": 0.362379,
+        "naive": 0.278203,
+        "naive_lo": 0.218965,
+        "naive_hi": 0.34758,
         "naive_verdict": "RECOVERED",
-        "corrected": 0.296821,
-        "lo": 0.235516,
-        "hi": 0.357125,
-        "noise_floor": 0.021778,
+        "corrected": 0.277174,
+        "lo": 0.218723,
+        "hi": 0.346214,
+        "noise_floor": 0.01918,
         "verdict": "RECOVERED",
         "why": "95% interval covers the truth"
       },
@@ -110,14 +110,14 @@
         "factor": "freshness_gap",
         "label": "Date honesty gap",
         "true": 0.113636,
-        "naive": 0.14641,
-        "naive_lo": 0.092293,
-        "naive_hi": 0.205104,
+        "naive": 0.110282,
+        "naive_lo": 0.053899,
+        "naive_hi": 0.172304,
         "naive_verdict": "RECOVERED",
-        "corrected": 0.138667,
-        "lo": 0.084409,
-        "hi": 0.194314,
-        "noise_floor": 0.023243,
+        "corrected": 0.107783,
+        "lo": 0.053959,
+        "hi": 0.169024,
+        "noise_floor": 0.020118,
         "verdict": "RECOVERED",
         "why": "95% interval covers the truth"
       },
@@ -125,14 +125,14 @@
         "factor": "schema_coverage",
         "label": "Structured data coverage",
         "true": 0.054545,
-        "naive": 0.036192,
-        "naive_lo": 0.00236,
-        "naive_hi": 0.085968,
+        "naive": 0.040595,
+        "naive_lo": 0.002831,
+        "naive_hi": 0.096827,
         "naive_verdict": "RECOVERED",
-        "corrected": 0.037418,
-        "lo": 0.003599,
-        "hi": 0.08628,
-        "noise_floor": 0.018096,
+        "corrected": 0.045222,
+        "lo": 0.003347,
+        "hi": 0.101583,
+        "noise_floor": 0.01797,
         "verdict": "RECOVERED",
         "why": "95% interval covers the truth"
       },
@@ -140,14 +140,14 @@
         "factor": "residual_ctr",
         "label": "Residual CTR",
         "true": 0.590909,
-        "naive": 0.202036,
-        "naive_lo": 0.149482,
-        "naive_hi": 0.259367,
+        "naive": 0.153206,
+        "naive_lo": 0.091439,
+        "naive_hi": 0.212605,
         "naive_verdict": "MISSED",
-        "corrected": 0.235493,
-        "lo": 0.182544,
-        "hi": 0.29352,
-        "noise_floor": 0.019631,
+        "corrected": 0.375786,
+        "lo": 0.316183,
+        "hi": 0.432274,
+        "noise_floor": 0.019254,
         "verdict": "MISSED",
         "why": "understated -- interval sits entirely below the truth"
       },
@@ -155,14 +155,14 @@
         "factor": "cwv_inp",
         "label": "INP (field)",
         "true": 0.036364,
-        "naive": 0.067169,
-        "naive_lo": 0.01081,
-        "naive_hi": 0.12361,
+        "naive": 0.074672,
+        "naive_lo": 0.009333,
+        "naive_hi": 0.13631,
         "naive_verdict": "RECOVERED",
-        "corrected": 0.060316,
-        "lo": 0.008624,
-        "hi": 0.116801,
-        "noise_floor": 0.018971,
+        "corrected": 0.074891,
+        "lo": 0.009216,
+        "hi": 0.136704,
+        "noise_floor": 0.018876,
         "verdict": "RECOVERED",
         "why": "95% interval covers the truth"
       },
@@ -170,31 +170,31 @@
         "factor": "kw_density",
         "label": "Keyword density",
         "true": 0.0,
-        "naive": 0.337725,
-        "naive_lo": 0.270674,
-        "naive_hi": 0.40906,
+        "naive": 0.40458,
+        "naive_lo": 0.330694,
+        "naive_hi": 0.482561,
         "naive_verdict": "FALSE POSITIVE",
-        "corrected": 0.013481,
-        "lo": 0.005548,
-        "hi": 0.223912,
-        "noise_floor": 0.02348,
-        "verdict": "CLEAN",
-        "why": "correctly found nothing"
+        "corrected": 0.106637,
+        "lo": 0.006119,
+        "hi": 0.309779,
+        "noise_floor": 0.021432,
+        "verdict": "FALSE POSITIVE",
+        "why": "estimator invented weight for a factor with a true weight of zero"
       }
     ],
     "eta_true": 1.0,
-    "eta_hat": 1.08209,
+    "eta_hat": 1.028358,
     "bundle": {
       "true": 0.840909,
       "naive": [
-        0.500505,
-        0.436395,
-        0.565784
+        0.532463,
+        0.472865,
+        0.615453
       ],
       "corrected": [
-        0.761469,
-        0.610313,
-        1.197716
+        0.756039,
+        0.597388,
+        1.085625
       ]
     },
     "n_queries": 1200,
@@ -211,31 +211,31 @@
       {
         "pipeline": "naive",
         "n_queries": 1200,
-        "est_a": 0.16278,
-        "est_b": 0.635357,
-        "diff_lo": -0.578419,
-        "diff_hi": -0.375638,
+        "est_a": 0.127882,
+        "est_b": 0.646178,
+        "diff_lo": -0.61716,
+        "diff_hi": -0.425896,
         "separated": true,
-        "n_required": 103
+        "n_required": 83
       },
       {
         "pipeline": "corrected",
         "n_queries": 1200,
-        "est_a": 0.747987,
-        "est_b": 0.628729,
-        "diff_lo": -0.22847,
-        "diff_hi": 0.44602,
+        "est_a": 0.649402,
+        "est_b": 0.653004,
+        "diff_lo": -0.348431,
+        "diff_hi": 0.326395,
         "separated": false,
-        "n_required": 18517
+        "n_required": 24885382
       }
     ],
     "scale": {
-      "n_queries": 19000,
-      "required": 18517,
-      "est_a": 0.801695,
-      "est_b": 0.618853,
-      "diff_lo": 0.092134,
-      "diff_hi": 0.270703,
+      "n_queries": 24000,
+      "required": 24885382,
+      "est_a": 0.766571,
+      "est_b": 0.615725,
+      "diff_lo": 0.088387,
+      "diff_hi": 0.22076,
       "separated": true,
       "rows": [
         {
@@ -249,89 +249,89 @@
         {
           "factor": "title_match",
           "true": 0.25,
-          "est": 0.201434,
-          "lo": 0.189751,
-          "hi": 0.215745,
+          "est": 0.199043,
+          "lo": 0.186595,
+          "hi": 0.21421,
           "verdict": "MISSED"
         },
         {
           "factor": "host_pagerank",
           "true": 0.727273,
-          "est": 0.618853,
-          "lo": 0.604548,
-          "hi": 0.635276,
+          "est": 0.615725,
+          "lo": 0.602686,
+          "hi": 0.630484,
           "verdict": "MISSED"
         },
         {
           "factor": "ref_domains_log",
           "true": 0.409091,
-          "est": 0.339046,
-          "lo": 0.321733,
-          "hi": 0.351838,
+          "est": 0.341867,
+          "lo": 0.331134,
+          "hi": 0.355524,
           "verdict": "MISSED"
         },
         {
           "factor": "brand_demand",
           "true": 0.181818,
-          "est": 0.177057,
-          "lo": 0.165347,
-          "hi": 0.190906,
+          "est": 0.174577,
+          "lo": 0.160454,
+          "hi": 0.186542,
           "verdict": "RECOVERED"
         },
         {
           "factor": "content_depth_rel",
           "true": 0.840909,
-          "est": 0.801695,
-          "lo": 0.708337,
-          "hi": 0.883964,
-          "verdict": "RECOVERED"
+          "est": 0.766571,
+          "lo": 0.704859,
+          "hi": 0.837234,
+          "verdict": "MISSED"
         },
         {
           "factor": "eeat_score",
           "true": 0.340909,
-          "est": 0.277934,
-          "lo": 0.264917,
-          "hi": 0.292454,
+          "est": 0.295587,
+          "lo": 0.282145,
+          "hi": 0.308302,
           "verdict": "MISSED"
         },
         {
           "factor": "freshness_gap",
           "true": 0.113636,
-          "est": 0.105759,
-          "lo": 0.089158,
-          "hi": 0.118927,
-          "verdict": "RECOVERED"
+          "est": 0.0953,
+          "lo": 0.083048,
+          "hi": 0.108572,
+          "verdict": "MISSED"
         },
         {
           "factor": "schema_coverage",
           "true": 0.054545,
-          "est": 0.05029,
-          "lo": 0.035792,
-          "hi": 0.063757,
+          "est": 0.060355,
+          "lo": 0.048333,
+          "hi": 0.071165,
           "verdict": "RECOVERED"
         },
         {
           "factor": "residual_ctr",
           "true": 0.590909,
-          "est": 0.464121,
-          "lo": 0.451037,
-          "hi": 0.479408,
+          "est": 0.454892,
+          "lo": 0.44077,
+          "hi": 0.468375,
           "verdict": "MISSED"
         },
         {
           "factor": "cwv_inp",
           "true": 0.036364,
-          "est": 0.039516,
-          "lo": 0.02426,
-          "hi": 0.050577,
+          "est": 0.029738,
+          "lo": 0.017788,
+          "hi": 0.043169,
           "verdict": "RECOVERED"
         },
         {
           "factor": "kw_density",
           "true": 0.0,
-          "est": 0.031026,
-          "lo": 0.002021,
-          "hi": 0.08394,
+          "est": 0.044116,
+          "lo": 0.004792,
+          "hi": 0.080287,
           "verdict": "FALSE POSITIVE"
         }
       ]
@@ -341,328 +341,328 @@
     "rows": [
       {
         "model": "random ordering",
-        "ndcg10": 0.626006,
-        "pair_acc": 0.505952,
-        "kendall_tau": 0.019877
+        "ndcg10": 0.638027,
+        "pair_acc": 0.514127,
+        "kendall_tau": 0.021481
       },
       {
         "model": "semantic similarity only",
-        "ndcg10": 0.731726,
-        "pair_acc": 0.621746,
-        "kendall_tau": 0.210741
+        "ndcg10": 0.730297,
+        "pair_acc": 0.619683,
+        "kendall_tau": 0.205185
       },
       {
         "model": "referring domains only",
-        "ndcg10": 0.64803,
-        "pair_acc": 0.537937,
-        "kendall_tau": 0.065926
+        "ndcg10": 0.660019,
+        "pair_acc": 0.542857,
+        "kendall_tau": 0.065185
       },
       {
         "model": "head 1: pairwise logistic",
-        "ndcg10": 0.772005,
-        "pair_acc": 0.681746,
-        "kendall_tau": 0.311975
+        "ndcg10": 0.777332,
+        "pair_acc": 0.68619,
+        "kendall_tau": 0.315556
       },
       {
         "model": "head 2: sklearn HistGradientBoosting",
-        "ndcg10": 0.765714,
-        "pair_acc": 0.671429,
-        "kendall_tau": 0.288642
+        "ndcg10": 0.772786,
+        "pair_acc": 0.67119,
+        "kendall_tau": 0.292346
       }
     ],
     "linear_ok": true,
-    "message": "the linear head BEATS the boosted head by 0.8% -- there is no non-linearity here for trees to find, so scalar weights are not just quotable, they are the better model"
+    "message": "the linear head BEATS the boosted head by 0.6% -- there is no non-linearity here for trees to find, so scalar weights are not just quotable, they are the better model"
   },
   "clusters": {
-    "ari": 0.955898,
+    "ari": 0.952499,
     "rows": [
       {
         "cluster": "ecommerce",
         "factor": "semantic_sim",
         "index": 1.0,
-        "n_queries": 1071
+        "n_queries": 994
       },
       {
         "cluster": "ecommerce",
         "factor": "title_match",
-        "index": 0.207408,
-        "n_queries": 1071
+        "index": 0.250087,
+        "n_queries": 994
       },
       {
         "cluster": "ecommerce",
         "factor": "host_pagerank",
-        "index": 0.56686,
-        "n_queries": 1071
+        "index": 0.544421,
+        "n_queries": 994
       },
       {
         "cluster": "ecommerce",
         "factor": "ref_domains_log",
-        "index": 0.352764,
-        "n_queries": 1071
+        "index": 0.321338,
+        "n_queries": 994
       },
       {
         "cluster": "ecommerce",
         "factor": "brand_demand",
-        "index": 0.141311,
-        "n_queries": 1071
+        "index": 0.124808,
+        "n_queries": 994
       },
       {
         "cluster": "ecommerce",
         "factor": "content_depth_rel",
-        "index": 0.134703,
-        "n_queries": 1071
+        "index": 0.070934,
+        "n_queries": 994
       },
       {
         "cluster": "ecommerce",
         "factor": "eeat_score",
-        "index": 0.27646,
-        "n_queries": 1071
+        "index": 0.188126,
+        "n_queries": 994
       },
       {
         "cluster": "ecommerce",
         "factor": "freshness_gap",
-        "index": 0.082983,
-        "n_queries": 1071
+        "index": 0.122639,
+        "n_queries": 994
       },
       {
         "cluster": "ecommerce",
         "factor": "schema_coverage",
-        "index": 0.156952,
-        "n_queries": 1071
+        "index": 0.084162,
+        "n_queries": 994
       },
       {
         "cluster": "ecommerce",
         "factor": "residual_ctr",
-        "index": 0.437838,
-        "n_queries": 1071
+        "index": 0.574223,
+        "n_queries": 994
       },
       {
         "cluster": "ecommerce",
         "factor": "cwv_inp",
-        "index": 0.053991,
-        "n_queries": 1071
+        "index": 0.138153,
+        "n_queries": 994
       },
       {
         "cluster": "ecommerce",
         "factor": "kw_density",
-        "index": 0.290861,
-        "n_queries": 1071
+        "index": 0.347601,
+        "n_queries": 994
       },
       {
         "cluster": "informational",
         "factor": "semantic_sim",
         "index": 1.0,
-        "n_queries": 976
+        "n_queries": 1004
       },
       {
         "cluster": "informational",
         "factor": "title_match",
-        "index": 0.180267,
-        "n_queries": 976
+        "index": 0.218682,
+        "n_queries": 1004
       },
       {
         "cluster": "informational",
         "factor": "host_pagerank",
-        "index": 0.518836,
-        "n_queries": 976
+        "index": 0.539177,
+        "n_queries": 1004
       },
       {
         "cluster": "informational",
         "factor": "ref_domains_log",
-        "index": 0.237194,
-        "n_queries": 976
+        "index": 0.338553,
+        "n_queries": 1004
       },
       {
         "cluster": "informational",
         "factor": "brand_demand",
-        "index": 0.176207,
-        "n_queries": 976
+        "index": 0.150498,
+        "n_queries": 1004
       },
       {
         "cluster": "informational",
         "factor": "content_depth_rel",
-        "index": 0.233017,
-        "n_queries": 976
+        "index": 0.159149,
+        "n_queries": 1004
       },
       {
         "cluster": "informational",
         "factor": "eeat_score",
-        "index": 0.277061,
-        "n_queries": 976
+        "index": 0.356125,
+        "n_queries": 1004
       },
       {
         "cluster": "informational",
         "factor": "freshness_gap",
-        "index": 0.177578,
-        "n_queries": 976
+        "index": 0.120389,
+        "n_queries": 1004
       },
       {
         "cluster": "informational",
         "factor": "schema_coverage",
-        "index": 0.020096,
-        "n_queries": 976
+        "index": 0.002528,
+        "n_queries": 1004
       },
       {
         "cluster": "informational",
         "factor": "residual_ctr",
-        "index": 0.212628,
-        "n_queries": 976
+        "index": 0.374464,
+        "n_queries": 1004
       },
       {
         "cluster": "informational",
         "factor": "cwv_inp",
-        "index": 0.045056,
-        "n_queries": 976
+        "index": 0.077009,
+        "n_queries": 1004
       },
       {
         "cluster": "informational",
         "factor": "kw_density",
-        "index": 0.553965,
-        "n_queries": 976
+        "index": 0.604488,
+        "n_queries": 1004
       },
       {
         "cluster": "local-service",
         "factor": "semantic_sim",
         "index": 1.0,
-        "n_queries": 1018
+        "n_queries": 1017
       },
       {
         "cluster": "local-service",
         "factor": "title_match",
-        "index": 0.237351,
-        "n_queries": 1018
+        "index": 0.189721,
+        "n_queries": 1017
       },
       {
         "cluster": "local-service",
         "factor": "host_pagerank",
-        "index": 0.373096,
-        "n_queries": 1018
+        "index": 0.367335,
+        "n_queries": 1017
       },
       {
         "cluster": "local-service",
         "factor": "ref_domains_log",
-        "index": 0.237409,
-        "n_queries": 1018
+        "index": 0.137852,
+        "n_queries": 1017
       },
       {
         "cluster": "local-service",
         "factor": "brand_demand",
-        "index": 0.264126,
-        "n_queries": 1018
+        "index": 0.236974,
+        "n_queries": 1017
       },
       {
         "cluster": "local-service",
         "factor": "content_depth_rel",
-        "index": 0.138709,
-        "n_queries": 1018
+        "index": 0.14154,
+        "n_queries": 1017
       },
       {
         "cluster": "local-service",
         "factor": "eeat_score",
-        "index": 0.171966,
-        "n_queries": 1018
+        "index": 0.212019,
+        "n_queries": 1017
       },
       {
         "cluster": "local-service",
         "factor": "freshness_gap",
-        "index": 0.089349,
-        "n_queries": 1018
+        "index": 0.179488,
+        "n_queries": 1017
       },
       {
         "cluster": "local-service",
         "factor": "schema_coverage",
-        "index": 0.014336,
-        "n_queries": 1018
+        "index": 0.050815,
+        "n_queries": 1017
       },
       {
         "cluster": "local-service",
         "factor": "residual_ctr",
-        "index": 0.495593,
-        "n_queries": 1018
+        "index": 0.57823,
+        "n_queries": 1017
       },
       {
         "cluster": "local-service",
         "factor": "cwv_inp",
-        "index": 0.040509,
-        "n_queries": 1018
+        "index": 0.022416,
+        "n_queries": 1017
       },
       {
         "cluster": "local-service",
         "factor": "kw_density",
-        "index": 0.289218,
-        "n_queries": 1018
+        "index": 0.280414,
+        "n_queries": 1017
       },
       {
         "cluster": "ymyl-finance",
         "factor": "semantic_sim",
         "index": 1.0,
-        "n_queries": 935
+        "n_queries": 985
       },
       {
         "cluster": "ymyl-finance",
         "factor": "title_match",
-        "index": 0.190274,
-        "n_queries": 935
+        "index": 0.132451,
+        "n_queries": 985
       },
       {
         "cluster": "ymyl-finance",
         "factor": "host_pagerank",
-        "index": 1.261504,
-        "n_queries": 935
+        "index": 1.186411,
+        "n_queries": 985
       },
       {
         "cluster": "ymyl-finance",
         "factor": "ref_domains_log",
-        "index": 0.582449,
-        "n_queries": 935
+        "index": 0.522459,
+        "n_queries": 985
       },
       {
         "cluster": "ymyl-finance",
         "factor": "brand_demand",
-        "index": 0.229426,
-        "n_queries": 935
+        "index": 0.196211,
+        "n_queries": 985
       },
       {
         "cluster": "ymyl-finance",
         "factor": "content_depth_rel",
-        "index": 0.22366,
-        "n_queries": 935
+        "index": 0.267739,
+        "n_queries": 985
       },
       {
         "cluster": "ymyl-finance",
         "factor": "eeat_score",
-        "index": 0.565731,
-        "n_queries": 935
+        "index": 0.496438,
+        "n_queries": 985
       },
       {
         "cluster": "ymyl-finance",
         "factor": "freshness_gap",
-        "index": 0.09797,
-        "n_queries": 935
+        "index": 0.079565,
+        "n_queries": 985
       },
       {
         "cluster": "ymyl-finance",
         "factor": "schema_coverage",
-        "index": 0.016557,
-        "n_queries": 935
+        "index": 0.030562,
+        "n_queries": 985
       },
       {
         "cluster": "ymyl-finance",
         "factor": "residual_ctr",
-        "index": 0.128969,
-        "n_queries": 935
+        "index": 0.201019,
+        "n_queries": 985
       },
       {
         "cluster": "ymyl-finance",
         "factor": "cwv_inp",
-        "index": 0.11035,
-        "n_queries": 935
+        "index": 0.006426,
+        "n_queries": 985
       },
       {
         "cluster": "ymyl-finance",
         "factor": "kw_density",
-        "index": 0.379664,
-        "n_queries": 935
+        "index": 0.387205,
+        "n_queries": 985
       }
     ],
     "headline": {
@@ -670,9 +670,9 @@
       "label": "Host-graph PageRank",
       "high": "ymyl-finance",
       "low": "local-service",
-      "high_val": 1.261504,
-      "low_val": 0.373096,
-      "measured_ratio": 3.381179,
+      "high_val": 1.186411,
+      "low_val": 0.367335,
+      "measured_ratio": 3.229776,
       "true_ratio": 4.363636
     },
     "clusters": [
@@ -688,145 +688,145 @@
         "factor": "semantic_sim",
         "label": "Dense query-document similarity",
         "true_weight": 1.0,
-        "fe_positions": -0.98437,
-        "matched_positions": -0.976748,
-        "lo": -1.005837,
-        "hi": -0.943806,
+        "fe_positions": -0.982448,
+        "matched_positions": -0.955004,
+        "lo": -0.982814,
+        "hi": -0.923775,
         "effort": 3,
         "effort_label": "weeks",
-        "per_effort": -0.325583
+        "per_effort": -0.318335
       },
       {
         "factor": "title_match",
         "label": "Title-query match",
         "true_weight": 0.25,
-        "fe_positions": -0.194506,
-        "matched_positions": -0.163198,
-        "lo": -0.193264,
-        "hi": -0.127755,
+        "fe_positions": -0.189951,
+        "matched_positions": -0.185423,
+        "lo": -0.219431,
+        "hi": -0.153696,
         "effort": 1,
         "effort_label": "hours",
-        "per_effort": -0.163198
+        "per_effort": -0.185423
       },
       {
         "factor": "host_pagerank",
         "label": "Host-graph PageRank",
         "true_weight": 0.727273,
-        "fe_positions": -0.603444,
-        "matched_positions": -0.545198,
-        "lo": -0.575223,
-        "hi": -0.511522,
+        "fe_positions": -0.617516,
+        "matched_positions": -0.589454,
+        "lo": -0.624757,
+        "hi": -0.556501,
         "effort": 5,
         "effort_label": "months, uncertain",
-        "per_effort": -0.10904
+        "per_effort": -0.117891
       },
       {
         "factor": "ref_domains_log",
         "label": "Referring root domains (log)",
         "true_weight": 0.409091,
-        "fe_positions": -0.310046,
-        "matched_positions": -0.247416,
-        "lo": -0.284603,
-        "hi": -0.218059,
+        "fe_positions": -0.313307,
+        "matched_positions": -0.320769,
+        "lo": -0.352289,
+        "hi": -0.290798,
         "effort": 5,
         "effort_label": "months, uncertain",
-        "per_effort": -0.049483
+        "per_effort": -0.064154
       },
       {
         "factor": "brand_demand",
         "label": "Branded search demand",
         "true_weight": 0.181818,
-        "fe_positions": -0.183266,
-        "matched_positions": -0.166589,
-        "lo": -0.196802,
-        "hi": -0.135208,
+        "fe_positions": -0.174945,
+        "matched_positions": -0.161233,
+        "lo": -0.195004,
+        "hi": -0.128495,
         "effort": 5,
         "effort_label": "months, uncertain",
-        "per_effort": -0.033318
+        "per_effort": -0.032247
       },
       {
         "factor": "content_depth_rel",
         "label": "Content depth vs SERP median",
         "true_weight": 0.840909,
-        "fe_positions": -0.170198,
-        "matched_positions": -0.260864,
-        "lo": -0.297015,
-        "hi": -0.226119,
+        "fe_positions": -0.158004,
+        "matched_positions": -0.219178,
+        "lo": -0.254947,
+        "hi": -0.184855,
         "effort": 3,
         "effort_label": "weeks",
-        "per_effort": -0.086955
+        "per_effort": -0.073059
       },
       {
         "factor": "eeat_score",
         "label": "E-E-A-T rubric score",
         "true_weight": 0.340909,
-        "fe_positions": -0.29104,
-        "matched_positions": -0.265737,
-        "lo": -0.298308,
-        "hi": -0.233932,
+        "fe_positions": -0.283951,
+        "matched_positions": -0.24163,
+        "lo": -0.271479,
+        "hi": -0.209585,
         "effort": 4,
         "effort_label": "a quarter",
-        "per_effort": -0.066434
+        "per_effort": -0.060408
       },
       {
         "factor": "freshness_gap",
         "label": "Date honesty gap",
         "true_weight": 0.113636,
-        "fe_positions": -0.113525,
-        "matched_positions": -0.112549,
-        "lo": -0.150214,
-        "hi": -0.079378,
+        "fe_positions": -0.116349,
+        "matched_positions": -0.113255,
+        "lo": -0.142621,
+        "hi": -0.078831,
         "effort": 1,
         "effort_label": "hours",
-        "per_effort": -0.112549
+        "per_effort": -0.113255
       },
       {
         "factor": "schema_coverage",
         "label": "Structured data coverage",
         "true_weight": 0.054545,
-        "fe_positions": -0.035732,
-        "matched_positions": -0.044671,
-        "lo": -0.073909,
-        "hi": -0.013158,
+        "fe_positions": -0.053656,
+        "matched_positions": -0.037137,
+        "lo": -0.071364,
+        "hi": -0.008794,
         "effort": 2,
         "effort_label": "days",
-        "per_effort": -0.022335
+        "per_effort": -0.018569
       },
       {
         "factor": "residual_ctr",
         "label": "Residual CTR",
         "true_weight": 0.590909,
-        "fe_positions": -0.33642,
-        "matched_positions": -0.255038,
-        "lo": -0.290746,
-        "hi": -0.221692,
+        "fe_positions": -0.429302,
+        "matched_positions": -0.37925,
+        "lo": -0.414659,
+        "hi": -0.349254,
         "effort": 2,
         "effort_label": "days",
-        "per_effort": -0.127519
+        "per_effort": -0.189625
       },
       {
         "factor": "cwv_inp",
         "label": "INP (field)",
         "true_weight": 0.036364,
-        "fe_positions": -0.043356,
-        "matched_positions": -0.001507,
-        "lo": -0.033927,
-        "hi": 0.031315,
+        "fe_positions": -0.032864,
+        "matched_positions": -0.039154,
+        "lo": -0.069774,
+        "hi": -0.01017,
         "effort": 3,
         "effort_label": "weeks",
-        "per_effort": -0.000502
+        "per_effort": -0.013051
       },
       {
         "factor": "kw_density",
         "label": "Keyword density",
         "true_weight": 0.0,
-        "fe_positions": -0.372726,
-        "matched_positions": -0.340521,
-        "lo": -0.37594,
-        "hi": -0.304631,
+        "fe_positions": -0.373864,
+        "matched_positions": -0.362885,
+        "lo": -0.402373,
+        "hi": -0.327741,
         "effort": 1,
         "effort_label": "hours",
-        "per_effort": -0.340521
+        "per_effort": -0.362885
       }
     ],
     "n_queries": 4000,
@@ -836,9 +836,9 @@
     "runs": [
       {
         "true": -0.6,
-        "est": -0.203056,
-        "lo": -0.616798,
-        "hi": 0.210686,
+        "est": -0.307738,
+        "lo": -0.776381,
+        "hi": 0.160905,
         "significant": false,
         "n_per_arm": 120,
         "days": 28,
@@ -846,24 +846,24 @@
       },
       {
         "true": -0.6,
-        "est": -0.473292,
-        "lo": -0.75244,
-        "hi": -0.194145,
+        "est": -0.5193,
+        "lo": -0.806354,
+        "hi": -0.232247,
         "significant": true,
         "n_per_arm": 300,
         "days": 28,
-        "mde": 0.4
+        "mde": 0.45
       }
     ],
-    "coverage": 0.945,
+    "coverage": 0.955,
     "mde": [
       {
         "urls_per_arm": 30,
-        "mde_positions": 1.3
+        "mde_positions": 1.25
       },
       {
         "urls_per_arm": 60,
-        "mde_positions": 1.0
+        "mde_positions": 0.95
       },
       {
         "urls_per_arm": 120,
@@ -875,21 +875,21 @@
       },
       {
         "urls_per_arm": 300,
-        "mde_positions": 0.4
+        "mde_positions": 0.45
       }
     ]
   },
   "meta": {
-    "seed": 7,
+    "seed": 123,
     "pilot_queries": 1200,
     "scale_queries": 24000,
-    "runtime_s": 33.1,
+    "runtime_s": 40.2,
     "numpy": "2.4.4",
     "pandas": "3.0.2",
     "lightgbm": false,
     "n_factors": 34,
     "n_simulated": 12,
-    "generated": "2026-08-28 17:55 UTC"
+    "generated": "2026-08-28 17:57 UTC"
   },
   "factors": [
     {
