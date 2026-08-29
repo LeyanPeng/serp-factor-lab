@@ -297,6 +297,124 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--stamp);
     </dl>
   </header>
 
+  <!-- why -->
+  <section class="clause">
+    <div class="no">WHY</div>
+    <div class="body">
+      <h2>What this is for, and how you would know it works</h2>
+
+      <p class="lede">
+        You put it precisely on the call: Google does not tell us, so we work by
+        association. The trouble with association is that it says nothing about
+        its own errors. A correlation study hands back a number whether or not
+        that number means anything, and it hands it back to three decimal
+        places. Nothing in the method ever raises its hand.
+      </p>
+
+      <p>
+        That is not an academic worry for an agency. A factor table is a
+        budgeting document. It decides whether a quarter of a retainer goes on
+        writer hours, on links, or on Core Web Vitals. If the table is wrong it
+        does not feel wrong &mdash; it feels precise. And afterwards nobody can
+        tell, because rankings move for a hundred reasons at once and the
+        counterfactual was never measured. The failure is silent, and it repeats
+        every quarter.
+      </p>
+
+      <p>
+        So the question underneath &ldquo;is 0.84 really bigger than 0.73&rdquo;
+        is a harder one: <strong>what would have to be true for a weight to be
+        worth acting on, and how would we find out?</strong> That is what this
+        answers. Not with a better number &mdash; with four tests a number has
+        to survive before anyone spends money on it.
+      </p>
+
+      <h3>The four tests, in order</h3>
+      <table>
+        <thead>
+          <tr><th>Test</th><th>When</th><th>The question</th><th>What passing buys</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. Recovery</strong><br>
+              <span class="label" style="color:var(--pass)">done &mdash; in the repo</span></td>
+            <td>offline</td>
+            <td>On a world whose answers I already know, does the estimator find
+              them?</td>
+            <td>An error bar you can legitimately attach to a live number. This
+              is the only test that can ever be marked, because it is the only
+              one with an answer key.</td>
+          </tr>
+          <tr>
+            <td><strong>2. Agreement</strong></td>
+            <td>week 1<br><span class="label">live SERPs</span></td>
+            <td>Does it order real search results the way Google orders them?
+              NDCG@10 on queries it has never seen, against an honest baseline.</td>
+            <td>Permission to continue. If it cannot beat plain semantic
+              similarity on its own, the factor model adds nothing and we stop
+              there rather than dress it up.</td>
+          </tr>
+          <tr>
+            <td><strong>3. Forecast</strong><br>
+              <span class="label" style="color:var(--stamp)">the one that matters</span></td>
+            <td>week 5<br>onward</td>
+            <td>Freeze the model. Predict next month's rank <em>movement</em> on
+              a held&#8209;out panel. Then score the prediction against what
+              actually happened.</td>
+            <td>A forecast, plus the calibration curve saying how much of it to
+              believe. <strong>Only this test asks the model to predict
+              anything.</strong></td>
+          </tr>
+          <tr>
+            <td><strong>4. Intervention</strong></td>
+            <td>starts week 4,<br>reads out ~week 10</td>
+            <td>Change one factor on real client URLs, hold a matched control
+              group, and measure the difference.</td>
+            <td>A number you can put in a contract. Nothing else on this list
+              earns that.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        Every ranking-factor study I have ever read stops at test 2. It describes
+        today's search results and calls that a model. But a description of today
+        that cannot call tomorrow's movement is not a prediction, and you cannot
+        budget against a description. Test 3 is cheap &mdash; it needs no new
+        data, only the discipline to freeze a model and write the prediction down
+        before looking.
+      </p>
+
+      <div class="call">
+        <p><strong>What would make me drop the whole approach.</strong> If test 3
+        comes back uncalibrated &mdash; predicted rank movement uncorrelated with
+        what actually moved &mdash; then factor weights are the wrong instrument
+        for that vertical, and the right thing to do is say so rather than ship
+        it anyway. That is roughly six weeks to a clear failure state. It is
+        deliberate: <em>a method that cannot fail is not a method</em>, and the
+        reason SEO factor tables never die is that none of them was ever built
+        so that it could.</p>
+      </div>
+
+      <h3>Why this is worth doing at all</h3>
+      <p>
+        The industry sells confidence. Every tool prints a number; none prints an
+        error bar. That holds up until a client asks <em>&ldquo;you told us this
+        would work &mdash; what happened?&rdquo;</em> and there is no answer,
+        because nothing was measured and rankings move for reasons nobody
+        recorded.
+      </p>
+      <p>
+        The alternative is not more numbers. It is <strong>fewer claims, each
+        carrying what it is worth, what test produced it, and when it was last
+        checked</strong> &mdash; and a stated rule that anything which has not
+        passed test 3 or test 4 does not reach a client at all. That is a
+        smaller thing to sell and a much more defensible one, and as far as I can
+        tell nobody in this market is selling it.
+      </p>
+    </div>
+  </section>
+
   <!-- route -->
   <section class="clause">
     <div class="no">ROUTE</div>

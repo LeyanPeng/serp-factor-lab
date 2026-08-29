@@ -22,6 +22,51 @@ terminal and a screenshot of the dashboard always agree.
 
 ---
 
+## Why this exists, and how you would know it works
+
+You put it precisely: Google does not tell us, so we work by association. The
+trouble with association is that **it says nothing about its own errors.** A
+correlation study hands back a number whether or not that number means
+anything, and it hands it back to three decimal places. Nothing in the method
+ever raises its hand.
+
+That is not academic. A factor table is a budgeting document — it decides
+whether a quarter of a retainer goes on writer hours, on links, or on Core Web
+Vitals. If the table is wrong it does not *feel* wrong, it feels precise. And
+afterwards nobody can tell, because rankings move for a hundred reasons at once
+and the counterfactual was never measured. The failure is silent, and it
+repeats every quarter.
+
+So the real question underneath "is 0.84 bigger than 0.73" is harder: **what
+would have to be true for a weight to be worth acting on, and how would we find
+out?** Four tests, in order.
+
+| test | when | the question | what passing buys |
+|---|---|---|---|
+| **1. Recovery** — *done, in this repo* | offline | On a world whose answers I already know, does the estimator find them? | An error bar you can legitimately attach to a live number. The only test with an answer key. |
+| **2. Agreement** | week 1, live | Does it order real SERPs the way Google does? NDCG@10 on unseen queries vs an honest baseline. | Permission to continue. If it can't beat plain semantic similarity, the factor model adds nothing and we stop. |
+| **3. Forecast** — *the one that matters* | week 5+ | Freeze the model. Predict next month's rank **movement** on a held-out panel. Score it against what happened. | A forecast, plus a calibration curve saying how much to believe it. **Only this test asks the model to predict anything.** |
+| **4. Intervention** | starts wk 4, reads out ~wk 10 | Change one factor on real client URLs against a matched control. | A number you can put in a contract. Nothing else here earns that. |
+
+Every ranking-factor study I have read stops at test 2 — it describes today's
+SERP and calls that a model. A description of today that cannot call tomorrow's
+movement is not a prediction, and you cannot budget against a description.
+Test 3 needs no new data, only the discipline to freeze a model and write the
+prediction down before looking.
+
+**What would make me drop the approach.** If test 3 comes back uncalibrated —
+predicted movement uncorrelated with actual — then factor weights are the wrong
+instrument for that vertical, and the honest move is to say so rather than ship
+it. That is ~6 weeks to a clear failure state, deliberately: *a method that
+cannot fail is not a method*, and the reason SEO factor tables never die is that
+none of them was ever built so that it could.
+
+The point is not more numbers. It is **fewer claims, each carrying what it is
+worth, which test produced it, and when it was last checked** — plus a rule that
+nothing which has not passed test 3 or 4 reaches a client at all.
+
+---
+
 ## Results
 
 ### 1. Your two numbers, run through two pipelines
